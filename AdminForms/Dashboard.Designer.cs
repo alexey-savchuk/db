@@ -30,6 +30,7 @@
         {
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.members = new System.Windows.Forms.TabPage();
+            this.roleComboBox = new System.Windows.Forms.ComboBox();
             this.deleteMemberButton = new System.Windows.Forms.Button();
             this.addMemberButton = new System.Windows.Forms.Button();
             this.updateMembersButton = new System.Windows.Forms.Button();
@@ -38,6 +39,7 @@
             this.memberName = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.memberEmail = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.books = new System.Windows.Forms.TabPage();
+            this.button7 = new System.Windows.Forms.Button();
             this.addBookButton = new System.Windows.Forms.Button();
             this.searchComboBox = new System.Windows.Forms.ComboBox();
             this.searchTextBox = new System.Windows.Forms.TextBox();
@@ -49,6 +51,7 @@
             this.bookAuthors = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.bookSubject = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.authors = new System.Windows.Forms.TabPage();
+            this.button8 = new System.Windows.Forms.Button();
             this.addAuthorButton = new System.Windows.Forms.Button();
             this.authorSearch = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
@@ -58,6 +61,7 @@
             this.authorFirstName = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.authorLastName = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.subjects = new System.Windows.Forms.TabPage();
+            this.button9 = new System.Windows.Forms.Button();
             this.addSubjectButton = new System.Windows.Forms.Button();
             this.subjectSearch = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
@@ -65,8 +69,29 @@
             this.subjectsList = new System.Windows.Forms.ListView();
             this.subjectId = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.subjectName = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.statuses = new System.Windows.Forms.TabPage();
+            this.button6 = new System.Windows.Forms.Button();
+            this.button5 = new System.Windows.Forms.Button();
+            this.button4 = new System.Windows.Forms.Button();
+            this.itemStatusList = new System.Windows.Forms.ListView();
+            this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.loanStatusList = new System.Windows.Forms.ListView();
+            this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.button3 = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
+            this.label10 = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
+            this.reservationStatusList = new System.Windows.Forms.ListView();
+            this.statusId = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.statusName = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.profile = new System.Windows.Forms.TabPage();
+            this.button10 = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.updateProfileButton = new System.Windows.Forms.Button();
             this.changePasswordButton = new System.Windows.Forms.Button();
             this.profilePhone = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
@@ -76,12 +101,12 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.profileLastName = new System.Windows.Forms.TextBox();
-            this.updateProfileButton = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.members.SuspendLayout();
             this.books.SuspendLayout();
             this.authors.SuspendLayout();
             this.subjects.SuspendLayout();
+            this.statuses.SuspendLayout();
             this.profile.SuspendLayout();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
@@ -92,6 +117,7 @@
             this.tabControl1.Controls.Add(this.books);
             this.tabControl1.Controls.Add(this.authors);
             this.tabControl1.Controls.Add(this.subjects);
+            this.tabControl1.Controls.Add(this.statuses);
             this.tabControl1.Controls.Add(this.profile);
             this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tabControl1.Location = new System.Drawing.Point(0, 0);
@@ -102,6 +128,7 @@
             // 
             // members
             // 
+            this.members.Controls.Add(this.roleComboBox);
             this.members.Controls.Add(this.deleteMemberButton);
             this.members.Controls.Add(this.addMemberButton);
             this.members.Controls.Add(this.updateMembersButton);
@@ -114,11 +141,19 @@
             this.members.Text = "Читатели";
             this.members.UseVisualStyleBackColor = true;
             // 
+            // roleComboBox
+            // 
+            this.roleComboBox.FormattingEnabled = true;
+            this.roleComboBox.Location = new System.Drawing.Point(633, 27);
+            this.roleComboBox.Name = "roleComboBox";
+            this.roleComboBox.Size = new System.Drawing.Size(122, 21);
+            this.roleComboBox.TabIndex = 8;
+            // 
             // deleteMemberButton
             // 
-            this.deleteMemberButton.Location = new System.Drawing.Point(685, 145);
+            this.deleteMemberButton.Location = new System.Drawing.Point(633, 442);
             this.deleteMemberButton.Name = "deleteMemberButton";
-            this.deleteMemberButton.Size = new System.Drawing.Size(67, 53);
+            this.deleteMemberButton.Size = new System.Drawing.Size(122, 53);
             this.deleteMemberButton.TabIndex = 7;
             this.deleteMemberButton.Text = "Удалить";
             this.deleteMemberButton.UseVisualStyleBackColor = true;
@@ -126,9 +161,9 @@
             // 
             // addMemberButton
             // 
-            this.addMemberButton.Location = new System.Drawing.Point(685, 86);
+            this.addMemberButton.Location = new System.Drawing.Point(633, 383);
             this.addMemberButton.Name = "addMemberButton";
-            this.addMemberButton.Size = new System.Drawing.Size(67, 53);
+            this.addMemberButton.Size = new System.Drawing.Size(122, 53);
             this.addMemberButton.TabIndex = 6;
             this.addMemberButton.Text = "Добавить";
             this.addMemberButton.UseVisualStyleBackColor = true;
@@ -136,9 +171,9 @@
             // 
             // updateMembersButton
             // 
-            this.updateMembersButton.Location = new System.Drawing.Point(685, 27);
+            this.updateMembersButton.Location = new System.Drawing.Point(633, 54);
             this.updateMembersButton.Name = "updateMembersButton";
-            this.updateMembersButton.Size = new System.Drawing.Size(67, 53);
+            this.updateMembersButton.Size = new System.Drawing.Size(122, 53);
             this.updateMembersButton.TabIndex = 5;
             this.updateMembersButton.Text = "Обновить";
             this.updateMembersButton.UseVisualStyleBackColor = true;
@@ -154,7 +189,7 @@
             this.membersList.HideSelection = false;
             this.membersList.Location = new System.Drawing.Point(28, 27);
             this.membersList.Name = "membersList";
-            this.membersList.Size = new System.Drawing.Size(634, 468);
+            this.membersList.Size = new System.Drawing.Size(585, 468);
             this.membersList.TabIndex = 4;
             this.membersList.UseCompatibleStateImageBehavior = false;
             this.membersList.View = System.Windows.Forms.View.Details;
@@ -168,15 +203,16 @@
             // memberName
             // 
             this.memberName.Text = "Имя";
-            this.memberName.Width = 300;
+            this.memberName.Width = 244;
             // 
             // memberEmail
             // 
             this.memberEmail.Text = "E-mail";
-            this.memberEmail.Width = 269;
+            this.memberEmail.Width = 238;
             // 
             // books
             // 
+            this.books.Controls.Add(this.button7);
             this.books.Controls.Add(this.addBookButton);
             this.books.Controls.Add(this.searchComboBox);
             this.books.Controls.Add(this.searchTextBox);
@@ -189,6 +225,15 @@
             this.books.TabIndex = 2;
             this.books.Text = "Книги";
             this.books.UseVisualStyleBackColor = true;
+            // 
+            // button7
+            // 
+            this.button7.Location = new System.Drawing.Point(680, 179);
+            this.button7.Name = "button7";
+            this.button7.Size = new System.Drawing.Size(72, 75);
+            this.button7.TabIndex = 11;
+            this.button7.Text = "Удалить";
+            this.button7.UseVisualStyleBackColor = true;
             // 
             // addBookButton
             // 
@@ -284,6 +329,7 @@
             // 
             // authors
             // 
+            this.authors.Controls.Add(this.button8);
             this.authors.Controls.Add(this.addAuthorButton);
             this.authors.Controls.Add(this.authorSearch);
             this.authors.Controls.Add(this.label6);
@@ -295,6 +341,15 @@
             this.authors.TabIndex = 3;
             this.authors.Text = "Авторы";
             this.authors.UseVisualStyleBackColor = true;
+            // 
+            // button8
+            // 
+            this.button8.Location = new System.Drawing.Point(677, 205);
+            this.button8.Name = "button8";
+            this.button8.Size = new System.Drawing.Size(72, 75);
+            this.button8.TabIndex = 17;
+            this.button8.Text = "Удалить";
+            this.button8.UseVisualStyleBackColor = true;
             // 
             // addAuthorButton
             // 
@@ -312,7 +367,6 @@
             this.authorSearch.Name = "authorSearch";
             this.authorSearch.Size = new System.Drawing.Size(315, 20);
             this.authorSearch.TabIndex = 13;
-            this.authorSearch.TextChanged += new System.EventHandler(this.authorSearch_TextChanged);
             // 
             // label6
             // 
@@ -323,7 +377,6 @@
             this.label6.Size = new System.Drawing.Size(135, 20);
             this.label6.TabIndex = 12;
             this.label6.Text = "Поиск авторов";
-            this.label6.Click += new System.EventHandler(this.label6_Click);
             // 
             // searchAuthorsButton
             // 
@@ -350,7 +403,6 @@
             this.authorsList.TabIndex = 11;
             this.authorsList.UseCompatibleStateImageBehavior = false;
             this.authorsList.View = System.Windows.Forms.View.Details;
-            this.authorsList.SelectedIndexChanged += new System.EventHandler(this.authorsList_SelectedIndexChanged);
             this.authorsList.DoubleClick += new System.EventHandler(this.AuthorsList_DoubleClick);
             // 
             // authorId
@@ -370,6 +422,7 @@
             // 
             // subjects
             // 
+            this.subjects.Controls.Add(this.button9);
             this.subjects.Controls.Add(this.addSubjectButton);
             this.subjects.Controls.Add(this.subjectSearch);
             this.subjects.Controls.Add(this.label7);
@@ -381,6 +434,15 @@
             this.subjects.TabIndex = 4;
             this.subjects.Text = "Предметы";
             this.subjects.UseVisualStyleBackColor = true;
+            // 
+            // button9
+            // 
+            this.button9.Location = new System.Drawing.Point(677, 205);
+            this.button9.Name = "button9";
+            this.button9.Size = new System.Drawing.Size(72, 75);
+            this.button9.TabIndex = 22;
+            this.button9.Text = "Удалить";
+            this.button9.UseVisualStyleBackColor = true;
             // 
             // addSubjectButton
             // 
@@ -445,8 +507,195 @@
             this.subjectName.Text = "Название";
             this.subjectName.Width = 292;
             // 
+            // statuses
+            // 
+            this.statuses.Controls.Add(this.button6);
+            this.statuses.Controls.Add(this.button5);
+            this.statuses.Controls.Add(this.button4);
+            this.statuses.Controls.Add(this.itemStatusList);
+            this.statuses.Controls.Add(this.loanStatusList);
+            this.statuses.Controls.Add(this.button3);
+            this.statuses.Controls.Add(this.button2);
+            this.statuses.Controls.Add(this.button1);
+            this.statuses.Controls.Add(this.label10);
+            this.statuses.Controls.Add(this.label9);
+            this.statuses.Controls.Add(this.label8);
+            this.statuses.Controls.Add(this.reservationStatusList);
+            this.statuses.Location = new System.Drawing.Point(4, 22);
+            this.statuses.Name = "statuses";
+            this.statuses.Size = new System.Drawing.Size(776, 535);
+            this.statuses.TabIndex = 5;
+            this.statuses.Text = "Статусы";
+            this.statuses.UseVisualStyleBackColor = true;
+            // 
+            // button6
+            // 
+            this.button6.Location = new System.Drawing.Point(550, 435);
+            this.button6.Name = "button6";
+            this.button6.Size = new System.Drawing.Size(200, 21);
+            this.button6.TabIndex = 16;
+            this.button6.Text = "Удалить";
+            this.button6.UseVisualStyleBackColor = true;
+            this.button6.Click += new System.EventHandler(this.DeleteItemStatus_Click);
+            // 
+            // button5
+            // 
+            this.button5.Location = new System.Drawing.Point(292, 435);
+            this.button5.Name = "button5";
+            this.button5.Size = new System.Drawing.Size(200, 21);
+            this.button5.TabIndex = 15;
+            this.button5.Text = "Удалить";
+            this.button5.UseVisualStyleBackColor = true;
+            this.button5.Click += new System.EventHandler(this.DeleteLoanStatus_Click);
+            // 
+            // button4
+            // 
+            this.button4.Location = new System.Drawing.Point(33, 435);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(200, 21);
+            this.button4.TabIndex = 14;
+            this.button4.Text = "Удалить";
+            this.button4.UseVisualStyleBackColor = true;
+            this.button4.Click += new System.EventHandler(this.DeleteReservationStatus_Click);
+            // 
+            // itemStatusList
+            // 
+            this.itemStatusList.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.columnHeader3,
+            this.columnHeader4});
+            this.itemStatusList.FullRowSelect = true;
+            this.itemStatusList.HideSelection = false;
+            this.itemStatusList.Location = new System.Drawing.Point(550, 50);
+            this.itemStatusList.Name = "itemStatusList";
+            this.itemStatusList.Size = new System.Drawing.Size(200, 350);
+            this.itemStatusList.TabIndex = 13;
+            this.itemStatusList.UseCompatibleStateImageBehavior = false;
+            this.itemStatusList.View = System.Windows.Forms.View.Details;
+            this.itemStatusList.DoubleClick += new System.EventHandler(this.ItemStatus_DoubleClick);
+            // 
+            // columnHeader3
+            // 
+            this.columnHeader3.Text = "statusId";
+            this.columnHeader3.Width = 0;
+            // 
+            // columnHeader4
+            // 
+            this.columnHeader4.Text = "Название";
+            this.columnHeader4.Width = 152;
+            // 
+            // loanStatusList
+            // 
+            this.loanStatusList.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.columnHeader1,
+            this.columnHeader2});
+            this.loanStatusList.FullRowSelect = true;
+            this.loanStatusList.HideSelection = false;
+            this.loanStatusList.Location = new System.Drawing.Point(292, 50);
+            this.loanStatusList.Name = "loanStatusList";
+            this.loanStatusList.Size = new System.Drawing.Size(200, 350);
+            this.loanStatusList.TabIndex = 12;
+            this.loanStatusList.UseCompatibleStateImageBehavior = false;
+            this.loanStatusList.View = System.Windows.Forms.View.Details;
+            this.loanStatusList.DoubleClick += new System.EventHandler(this.LoanStatusList_DoubleClick);
+            // 
+            // columnHeader1
+            // 
+            this.columnHeader1.Text = "statusId";
+            this.columnHeader1.Width = 0;
+            // 
+            // columnHeader2
+            // 
+            this.columnHeader2.Text = "Название";
+            this.columnHeader2.Width = 152;
+            // 
+            // button3
+            // 
+            this.button3.Location = new System.Drawing.Point(550, 408);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(200, 21);
+            this.button3.TabIndex = 8;
+            this.button3.Text = "Добавить";
+            this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.AddItemStatus_Click);
+            // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(292, 408);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(200, 21);
+            this.button2.TabIndex = 7;
+            this.button2.Text = "Добавить";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.AddLoanStatus_Click);
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(33, 408);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(200, 21);
+            this.button1.TabIndex = 6;
+            this.button1.Text = "Добавить";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.AddReservationStatus_Click);
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.25F);
+            this.label10.Location = new System.Drawing.Point(557, 30);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(184, 17);
+            this.label10.TabIndex = 5;
+            this.label10.Text = "Статусы экземпляров книг";
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.25F);
+            this.label9.Location = new System.Drawing.Point(278, 30);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(228, 17);
+            this.label9.TabIndex = 4;
+            this.label9.Text = "Статусы записей о взятых книгах";
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.25F);
+            this.label8.Location = new System.Drawing.Point(17, 30);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(239, 17);
+            this.label8.TabIndex = 3;
+            this.label8.Text = "Статусы заявок на получение книг";
+            // 
+            // reservationStatusList
+            // 
+            this.reservationStatusList.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.statusId,
+            this.statusName});
+            this.reservationStatusList.FullRowSelect = true;
+            this.reservationStatusList.HideSelection = false;
+            this.reservationStatusList.Location = new System.Drawing.Point(33, 50);
+            this.reservationStatusList.Name = "reservationStatusList";
+            this.reservationStatusList.Size = new System.Drawing.Size(200, 350);
+            this.reservationStatusList.TabIndex = 0;
+            this.reservationStatusList.UseCompatibleStateImageBehavior = false;
+            this.reservationStatusList.View = System.Windows.Forms.View.Details;
+            this.reservationStatusList.DoubleClick += new System.EventHandler(this.ReservationStatusList_DoubleClick);
+            // 
+            // statusId
+            // 
+            this.statusId.Text = "statusId";
+            this.statusId.Width = 0;
+            // 
+            // statusName
+            // 
+            this.statusName.Text = "Название";
+            this.statusName.Width = 152;
+            // 
             // profile
             // 
+            this.profile.Controls.Add(this.button10);
             this.profile.Controls.Add(this.panel1);
             this.profile.Location = new System.Drawing.Point(4, 22);
             this.profile.Name = "profile";
@@ -455,6 +704,16 @@
             this.profile.TabIndex = 1;
             this.profile.Text = "Аккаунт";
             this.profile.UseVisualStyleBackColor = true;
+            // 
+            // button10
+            // 
+            this.button10.Location = new System.Drawing.Point(676, 499);
+            this.button10.Name = "button10";
+            this.button10.Size = new System.Drawing.Size(94, 30);
+            this.button10.TabIndex = 10;
+            this.button10.Text = "Выйти";
+            this.button10.UseVisualStyleBackColor = true;
+            this.button10.Click += new System.EventHandler(this.SignOut_Click);
             // 
             // panel1
             // 
@@ -476,6 +735,15 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(291, 361);
             this.panel1.TabIndex = 9;
+            // 
+            // updateProfileButton
+            // 
+            this.updateProfileButton.Location = new System.Drawing.Point(47, 277);
+            this.updateProfileButton.Name = "updateProfileButton";
+            this.updateProfileButton.Size = new System.Drawing.Size(194, 33);
+            this.updateProfileButton.TabIndex = 10;
+            this.updateProfileButton.Text = "Обновить";
+            this.updateProfileButton.UseVisualStyleBackColor = true;
             // 
             // changePasswordButton
             // 
@@ -582,15 +850,6 @@
             this.profileLastName.Size = new System.Drawing.Size(194, 20);
             this.profileLastName.TabIndex = 3;
             // 
-            // updateProfileButton
-            // 
-            this.updateProfileButton.Location = new System.Drawing.Point(47, 277);
-            this.updateProfileButton.Name = "updateProfileButton";
-            this.updateProfileButton.Size = new System.Drawing.Size(194, 33);
-            this.updateProfileButton.TabIndex = 10;
-            this.updateProfileButton.Text = "Обновить";
-            this.updateProfileButton.UseVisualStyleBackColor = true;
-            // 
             // Dashboard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -599,6 +858,7 @@
             this.Controls.Add(this.tabControl1);
             this.Name = "Dashboard";
             this.Text = "Dashboard";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Dashboard_FormClosing);
             this.tabControl1.ResumeLayout(false);
             this.members.ResumeLayout(false);
             this.books.ResumeLayout(false);
@@ -607,6 +867,8 @@
             this.authors.PerformLayout();
             this.subjects.ResumeLayout(false);
             this.subjects.PerformLayout();
+            this.statuses.ResumeLayout(false);
+            this.statuses.PerformLayout();
             this.profile.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
@@ -665,5 +927,29 @@
         private System.Windows.Forms.ColumnHeader subjectId;
         private System.Windows.Forms.ColumnHeader subjectName;
         private System.Windows.Forms.Button updateProfileButton;
+        private System.Windows.Forms.TabPage statuses;
+        private System.Windows.Forms.ListView itemStatusList;
+        private System.Windows.Forms.ColumnHeader columnHeader3;
+        private System.Windows.Forms.ColumnHeader columnHeader4;
+        private System.Windows.Forms.ListView loanStatusList;
+        private System.Windows.Forms.ColumnHeader columnHeader1;
+        private System.Windows.Forms.ColumnHeader columnHeader2;
+        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.ListView reservationStatusList;
+        private System.Windows.Forms.ColumnHeader statusId;
+        private System.Windows.Forms.ColumnHeader statusName;
+        private System.Windows.Forms.Button button6;
+        private System.Windows.Forms.Button button5;
+        private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.ComboBox roleComboBox;
+        private System.Windows.Forms.Button button7;
+        private System.Windows.Forms.Button button8;
+        private System.Windows.Forms.Button button9;
+        private System.Windows.Forms.Button button10;
     }
 }

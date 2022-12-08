@@ -56,6 +56,7 @@
             this.loanDate = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.loanStatus = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.profile = new System.Windows.Forms.TabPage();
+            this.button1 = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
             this.changePasswordButton = new System.Windows.Forms.Button();
             this.profilePhone = new System.Windows.Forms.TextBox();
@@ -243,7 +244,7 @@
             this.reservationsList.View = System.Windows.Forms.View.Details;
             this.reservationsList.DoubleClick += new System.EventHandler(this.ReservationsList_DoubleClick);
             // 
-            // loanId
+            // reservationId
             // 
             this.reservationId.Text = "loanId";
             this.reservationId.Width = 0;
@@ -323,6 +324,7 @@
             // 
             // profile
             // 
+            this.profile.Controls.Add(this.button1);
             this.profile.Controls.Add(this.panel1);
             this.profile.Location = new System.Drawing.Point(4, 22);
             this.profile.Name = "profile";
@@ -330,6 +332,16 @@
             this.profile.TabIndex = 3;
             this.profile.Text = "Аккаунт";
             this.profile.UseVisualStyleBackColor = true;
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(674, 497);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(94, 30);
+            this.button1.TabIndex = 9;
+            this.button1.Text = "Выйти";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.SignOut_Click);
             // 
             // panel1
             // 
@@ -468,6 +480,7 @@
             this.Controls.Add(this.tabControl);
             this.Name = "Dashboard";
             this.Text = "Dashboard";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Dashboard_FormClosing);
             this.tabControl.ResumeLayout(false);
             this.booksTab.ResumeLayout(false);
             this.booksTab.PerformLayout();
@@ -520,5 +533,6 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Button changePasswordButton;
+        private System.Windows.Forms.Button button1;
     }
 }

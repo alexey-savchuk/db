@@ -1,4 +1,5 @@
-﻿using Library.SharedForms;
+﻿using Library.AdminForms.StausForms;
+using Library.SharedForms;
 using Library.UserForms;
 using Library.Utils;
 using System;
@@ -24,11 +25,18 @@ namespace Library.AdminForms
             InitializeComponent();
             searchComboBox.SelectedItem = searchComboBox.Items[0];
 
+            InitRoles();
+            roleComboBox.SelectedItem = roleComboBox.Items[0];
             RenderMemberList();
+
             RenderBooksList();
             RenderAuthorsList();
             RenderSubjectList();
             RenderProfile();
+
+            RenderReservationStatusList();
+            RenderLoanStatusList();
+            RenderItemStatusList();
         }
 
         private void UpdateMembersButton_Click(object sender, EventArgs e)
@@ -88,6 +96,34 @@ namespace Library.AdminForms
             }
         }
 
+        private void InitRoles()
+        {
+            try
+            {
+                database.OpenConnection();
+
+                string query = $"SELECT role_name FROM member_role";
+                SqlCommand cmd = new SqlCommand(query, database.GetConnection());
+
+                using (SqlDataReader reader = cmd.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        String role = reader["role_name"].ToString();
+                        roleComboBox.Items.Add(role);
+                    }
+                }
+            }
+            catch
+            {
+                throw;
+            }
+            finally
+            {
+                database.CloseConnection();
+            }
+        }
+
         private void RenderMemberList()
         {
             membersList.Items.Clear();
@@ -96,9 +132,11 @@ namespace Library.AdminForms
             {
                 database.OpenConnection();
 
+                String role = roleComboBox.SelectedItem.ToString();
+
                 string query = $"SELECT * FROM member M" +
                                $" INNER JOIN member_role R ON R.role_id = M.role_id" +
-                               $" WHERE M.member_id <> {MemberInfo.memberId}";
+                               $" WHERE M.member_id <> {MemberInfo.memberId} AND R.role_name = N'{role}'";
 
                 SqlCommand cmd = new SqlCommand(query, database.GetConnection());
 
@@ -449,19 +487,335 @@ namespace Library.AdminForms
             RenderBooksList();
         }
 
-        private void label6_Click(object sender, EventArgs e)
+        private void AddReservationStatus_Click(object sender, EventArgs e)
         {
+            using (AddReservationStatusForm form = new AddReservationStatusForm())
+            {
+                form.ShowDialog();
+            }
 
+            RenderReservationStatusList();
         }
 
-        private void authorSearch_TextChanged(object sender, EventArgs e)
+        private void AddLoanStatus_Click(object sender, EventArgs e)
         {
+            using (AddLoanStatusForm form = new AddLoanStatusForm())
+            {
+                form.ShowDialog();
+            }
 
+            RenderLoanStatusList();
         }
 
-        private void authorsList_SelectedIndexChanged(object sender, EventArgs e)
+        private void AddItemStatus_Click(object sender, EventArgs e)
         {
+            using (AddItemStatusForm form = new AddItemStatusForm())
+            {
+                form.ShowDialog();
+            }
 
+            RenderItemStatusList();
+        }
+
+        private void RenderReservationStatusList()
+        {
+            reservationStatusList.Items.Clear();
+
+            try
+            {
+                database.OpenConnection();
+
+                string query = $"SELECT status_id, status_name FROM reservation_status";
+                SqlCommand cmd = new SqlCommand(query, database.GetConnection());
+
+                using (SqlDataReader reader = cmd.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        String id = reader["status_id"].ToString();
+                        String status = reader["status_name"].ToString();
+
+                        ListViewItem item = new ListViewItem(id);
+                        item.SubItems.Add(status);
+
+                        reservationStatusList.Items.Add(item);
+                    }
+                }
+            }
+            catch
+            {
+                MessageBox.Show("Не удается отобразить данные", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                throw;
+            }
+            finally
+            {
+                database.CloseConnection();
+            }
+        }
+
+        private void RenderLoanStatusList()
+        {
+            loanStatusList.Items.Clear();
+
+            try
+            {
+                database.OpenConnection();
+
+                string query = $"SELECT status_id, status_name FROM loan_status";
+                SqlCommand cmd = new SqlCommand(query, database.GetConnection());
+
+                using (SqlDataReader reader = cmd.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        String id = reader["status_id"].ToString();
+                        String status = reader["status_name"].ToString();
+
+                        ListViewItem item = new ListViewItem(id);
+                        item.SubItems.Add(status);
+
+                        loanStatusList.Items.Add(item);
+                    }
+                }
+            }
+            catch
+            {
+                MessageBox.Show("Не удается отобразить данные", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                throw;
+            }
+            finally
+            {
+                database.CloseConnection();
+            }
+        }
+
+        private void RenderItemStatusList()
+        {
+            itemStatusList.Items.Clear();
+
+            try
+            {
+                database.OpenConnection();
+
+                string query = $"SELECT status_id, status_name FROM item_status";
+                SqlCommand cmd = new SqlCommand(query, database.GetConnection());
+
+                using (SqlDataReader reader = cmd.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        String id = reader["status_id"].ToString();
+                        String status = reader["status_name"].ToString();
+
+                        ListViewItem item = new ListViewItem(id);
+                        item.SubItems.Add(status);
+
+                        itemStatusList.Items.Add(item);
+                    }
+                }
+            }
+            catch
+            {
+                MessageBox.Show("Не удается отобразить данные", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                throw;
+            }
+            finally
+            {
+                database.CloseConnection();
+            }
+        }
+
+        private void DeleteReservationStatus_Click(object sender, EventArgs e)
+        {
+            if (reservationStatusList.SelectedItems.Count > 0)
+            {
+                database.OpenConnection();
+
+                SqlConnection connection = database.GetConnection();
+                SqlTransaction transaction = connection.BeginTransaction();
+
+                try
+                {
+                    SqlCommand cmd = new SqlCommand();
+                    cmd.Connection = connection;
+                    cmd.Transaction = transaction;
+
+                    foreach (ListViewItem item in reservationStatusList.SelectedItems)
+                    {
+                        String id = item.SubItems[0].Text;
+
+                        cmd.CommandText = $"DELETE FROM reservation_status WHERE status_id = {id}";
+                        cmd.ExecuteNonQuery();
+                    }
+
+                    transaction.Commit();
+                    RenderReservationStatusList();
+                }
+                catch
+                {
+                    transaction.Rollback();
+                    MessageBox.Show("Не удается завершить удаление", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    throw;
+                }
+                finally
+                {
+                    database.CloseConnection();
+                }
+            }
+            else
+            {
+                MessageBox.Show("Выберите статусы для удаления", "Неверный ввод", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
+
+        private void DeleteLoanStatus_Click(object sender, EventArgs e)
+        {
+            if (loanStatusList.SelectedItems.Count > 0)
+            {
+                database.OpenConnection();
+
+                SqlConnection connection = database.GetConnection();
+                SqlTransaction transaction = connection.BeginTransaction();
+
+                try
+                {
+                    SqlCommand cmd = new SqlCommand();
+                    cmd.Connection = connection;
+                    cmd.Transaction = transaction;
+
+                    foreach (ListViewItem item in loanStatusList.SelectedItems)
+                    {
+                        String id = item.SubItems[0].Text;
+
+                        cmd.CommandText = $"DELETE FROM loan_status WHERE status_id = {id}";
+                        cmd.ExecuteNonQuery();
+                    }
+
+                    transaction.Commit();
+                    RenderLoanStatusList();
+                }
+                catch
+                {
+                    transaction.Rollback();
+                    MessageBox.Show("Не удается завершить удаление", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    throw;
+                }
+                finally
+                {
+                    database.CloseConnection();
+                }
+            }
+            else
+            {
+                MessageBox.Show("Выберите статусы для удаления", "Неверный ввод", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
+
+        private void DeleteItemStatus_Click(object sender, EventArgs e)
+        {
+            if (itemStatusList.SelectedItems.Count > 0)
+            {
+                database.OpenConnection();
+
+                SqlConnection connection = database.GetConnection();
+                SqlTransaction transaction = connection.BeginTransaction();
+
+                try
+                {
+                    SqlCommand cmd = new SqlCommand();
+                    cmd.Connection = connection;
+                    cmd.Transaction = transaction;
+
+                    foreach (ListViewItem item in itemStatusList.SelectedItems)
+                    {
+                        String id = item.SubItems[0].Text;
+
+                        cmd.CommandText = $"DELETE FROM item_status WHERE status_id = {id}";
+                        cmd.ExecuteNonQuery();
+                    }
+
+                    transaction.Commit();
+                    RenderItemStatusList();
+                }
+                catch
+                {
+                    transaction.Rollback();
+                    MessageBox.Show("Не удается завершить удаление", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    throw;
+                }
+                finally
+                {
+                    database.CloseConnection();
+                }
+            }
+            else
+            {
+                MessageBox.Show("Выберите статусы для удаления", "Неверный ввод", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
+
+        private void ReservationStatusList_DoubleClick(object sender, EventArgs e)
+        {
+            if (reservationStatusList.SelectedItems.Count == 1)
+            {
+                String id = reservationStatusList.SelectedItems[0].SubItems[0].Text;
+                String status = reservationStatusList.SelectedItems[0].SubItems[1].Text;
+
+                using (UpdateItemStatusForm form = new UpdateItemStatusForm(id, status))
+                {
+                    form.ShowDialog();
+                }
+
+                RenderReservationStatusList();
+            }
+        }
+
+        private void LoanStatusList_DoubleClick(object sender, EventArgs e)
+        {
+            if (loanStatusList.SelectedItems.Count == 1)
+            {
+                String id = loanStatusList.SelectedItems[0].SubItems[0].Text;
+                String status = loanStatusList.SelectedItems[0].SubItems[1].Text;
+
+                using (UpdateItemStatusForm form = new UpdateItemStatusForm(id, status))
+                {
+                    form.ShowDialog();
+                }
+
+                RenderLoanStatusList();
+            }
+        }
+
+        private void ItemStatus_DoubleClick(object sender, EventArgs e)
+        {
+            if (itemStatusList.SelectedItems.Count == 1)
+            {
+                String id = itemStatusList.SelectedItems[0].SubItems[0].Text;
+                String status = itemStatusList.SelectedItems[0].SubItems[1].Text;
+
+                using (UpdateItemStatusForm form = new UpdateItemStatusForm(id, status))
+                {
+                    form.ShowDialog();
+                }
+
+                RenderItemStatusList();
+            }
+        }
+
+        private void SignOut_Click(object sender, EventArgs e)
+        {
+            MemberInfo.memberId = "";
+            MemberInfo.email = "";
+            MemberInfo.role = "";
+
+            LoginForm form = new LoginForm();
+            form.Show();
+            this.Hide();
+        }
+
+        private void Dashboard_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            Application.Exit();
         }
     }
 }

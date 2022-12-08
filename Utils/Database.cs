@@ -1,5 +1,6 @@
 ﻿using System.Data;
 using System.Data.SqlClient;
+using System.Configuration;
 
 namespace Library.Utils
 {
@@ -9,7 +10,8 @@ namespace Library.Utils
 
         public Database()
         {
-            connection = new SqlConnection(@"Data Source=192.168.0.2\SQLEXPRESS,1433;Network Library=DBMSSOCN;Initial Catalog=library;User ID=sa;Password=DrunkAdmin1!");
+            string connectionString = ConfigurationManager.ConnectionStrings["library"].ConnectionString;
+            connection = new SqlConnection(connectionString);
         }
 
         public void OpenConnection()

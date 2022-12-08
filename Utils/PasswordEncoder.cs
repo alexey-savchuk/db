@@ -1,8 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
+using System.Configuration;
+using System.Diagnostics;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
-using System.Threading.Tasks;
 
 namespace Library.Utils
 {
@@ -10,7 +11,11 @@ namespace Library.Utils
     {
         public String Encode(String password)
         {
-            return password;
+            using (SHA256 encoder = SHA256.Create())
+            {
+                byte[] hash = encoder.ComputeHash(Encoding.ASCII.GetBytes(password));
+                return String.Concat(hash.Select(b => b.ToString("x2")));
+            }
         }
     }
 }

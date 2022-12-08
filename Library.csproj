@@ -34,10 +34,28 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Configuration.ConfigurationManager, Version=7.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>packages\System.Configuration.ConfigurationManager.7.0.0\lib\net462\System.Configuration.ConfigurationManager.dll</HintPath>
+    </Reference>
     <Reference Include="System.Core" />
+    <Reference Include="System.Data.OracleClient" />
     <Reference Include="System.Data.SqlClient, Version=4.6.1.5, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>packages\System.Data.SqlClient.4.8.5\lib\net461\System.Data.SqlClient.dll</HintPath>
     </Reference>
+    <Reference Include="System.Net" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Security.AccessControl, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>packages\System.Security.AccessControl.6.0.0\lib\net461\System.Security.AccessControl.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Security.Permissions, Version=7.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>packages\System.Security.Permissions.7.0.0\lib\net462\System.Security.Permissions.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Security.Principal.Windows, Version=5.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>packages\System.Security.Principal.Windows.5.0.0\lib\net461\System.Security.Principal.Windows.dll</HintPath>
+    </Reference>
+    <Reference Include="System.ServiceProcess" />
+    <Reference Include="System.Transactions" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -47,6 +65,7 @@
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
+    <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AdminForms\AddAuthorForm.cs">
@@ -120,6 +139,42 @@
     </Compile>
     <Compile Include="AdminForms\ReservationForm.Designer.cs">
       <DependentUpon>ReservationForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AdminForms\StausForms\AddItemStatus.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AdminForms\StausForms\AddItemStatus.Designer.cs">
+      <DependentUpon>AddItemStatus.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AdminForms\StausForms\AddLoanStatusForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AdminForms\StausForms\AddLoanStatusForm.Designer.cs">
+      <DependentUpon>AddLoanStatusForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AdminForms\StausForms\UpdateItemStatusForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AdminForms\StausForms\UpdateItemStatusForm.Designer.cs">
+      <DependentUpon>UpdateItemStatusForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AdminForms\StausForms\UpdateLoanStatusForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AdminForms\StausForms\UpdateLoanStatusForm.Designer.cs">
+      <DependentUpon>UpdateLoanStatusForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AdminForms\StausForms\UpdateReservationStatusForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AdminForms\StausForms\UpdateReservationStatusForm.Designer.cs">
+      <DependentUpon>UpdateReservationStatusForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AdminForms\StausForms\AddReservationStatusForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AdminForms\StausForms\AddReservationStatusForm.Designer.cs">
+      <DependentUpon>AddReservationStatusForm.cs</DependentUpon>
     </Compile>
     <Compile Include="AdminForms\SubjectForm.cs">
       <SubType>Form</SubType>
@@ -275,6 +330,24 @@
     </EmbeddedResource>
     <EmbeddedResource Include="AdminForms\ReservationForm.resx">
       <DependentUpon>ReservationForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AdminForms\StausForms\AddItemStatus.resx">
+      <DependentUpon>AddItemStatus.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AdminForms\StausForms\AddLoanStatusForm.resx">
+      <DependentUpon>AddLoanStatusForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AdminForms\StausForms\UpdateItemStatusForm.resx">
+      <DependentUpon>UpdateItemStatusForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AdminForms\StausForms\UpdateLoanStatusForm.resx">
+      <DependentUpon>UpdateLoanStatusForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AdminForms\StausForms\UpdateReservationStatusForm.resx">
+      <DependentUpon>UpdateReservationStatusForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AdminForms\StausForms\AddReservationStatusForm.resx">
+      <DependentUpon>AddReservationStatusForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="AdminForms\SubjectForm.resx">
       <DependentUpon>SubjectForm.cs</DependentUpon>

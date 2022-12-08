@@ -20,6 +20,8 @@ namespace Library.AdminForms
         public RegisterForm()
         {
             InitializeComponent();
+            InitRoles();
+            roleComboBox.SelectedItem = roleComboBox.Items[0];
         }
 
         private void SubmitRegistrationButton_Click(object sender, EventArgs e)
@@ -30,28 +32,64 @@ namespace Library.AdminForms
                 String lastName = profileLastName.Text;
                 String email = profileEmail.Text;
                 String phone = profilePhone.Text;
-                String password = encoder.Encode(profilePassword.Text);
+                String password = profilePassword.Text;
+                String role = roleComboBox.SelectedItem.ToString();
+
+                if (firstName == "" || lastName == "" || email == "" ||
+                    phone == "" || password == "" || role == "")
+                {
+                    MessageBox.Show("Регистрация не может быть завершена", "Неверный ввод", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
 
                 database.OpenConnection();
 
                 string query = $"INSERT INTO member ( first_name, last_name, email, password, phone, role_id )" +
-                               $" VALUES ( N'{firstName}', N'{lastName}', N'{email}', N'{password}', N'{phone}'," +
-                               $" (SELECT role_id FROM member_role WHERE role_name = 'USER') )";
+                               $" VALUES ( N'{firstName}', N'{lastName}', N'{email}', N'{encoder.Encode(password)}'," +
+                               $" N'{phone}', (SELECT role_id FROM member_role WHERE role_name = N'{role}') )";
 
                 SqlCommand cmd = new SqlCommand(query, database.GetConnection());
                 cmd.ExecuteNonQuery();
 
-                MessageBox.Show("Успех", "Успех", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                this.Hide();
-
-                database.CloseConnection();
+                MessageBox.Show("Успешная регистрация", "Успех", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                this.Close();
             }
             catch
             {
-                MessageBox.Show("Ошибка", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
-
-                database.CloseConnection();
+                MessageBox.Show("Не удается завершить регистрацию", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 throw;
+            }
+            finally
+            {
+                database.CloseConnection();
+            }
+        }
+
+        private void InitRoles()
+        {
+            try
+            {
+                database.OpenConnection();
+
+                string query = $"SELECT role_name FROM member_role";
+                SqlCommand cmd = new SqlCommand(query, database.GetConnection());
+
+                using (SqlDataReader reader = cmd.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        String role = reader["role_name"].ToString();
+                        roleComboBox.Items.Add(role);
+                    }
+                }
+            }
+            catch
+            {
+                throw;
+            }
+            finally
+            {
+                database.CloseConnection();
             }
         }
     }

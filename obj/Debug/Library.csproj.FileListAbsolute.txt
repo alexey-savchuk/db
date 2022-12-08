@@ -42,3 +42,17 @@ C:\Users\saval\source\repos\ram\Library\obj\Debug\Library.AdminForms.MemberForm.
 C:\Users\saval\source\repos\ram\Library\obj\Debug\Library.AdminForms.RegisterForm.resources
 C:\Users\saval\source\repos\ram\Library\obj\Debug\Library.AdminForms.ReservationForm.resources
 C:\Users\saval\source\repos\ram\Library\obj\Debug\Library.AdminForms.SubjectForm.resources
+C:\Users\saval\source\repos\ram\Library\obj\Debug\Library.AdminForms.StausForms.AddItemStatusForm.resources
+C:\Users\saval\source\repos\ram\Library\obj\Debug\Library.AdminForms.StausForms.AddLoanStatusForm.resources
+C:\Users\saval\source\repos\ram\Library\obj\Debug\Library.AdminForms.StausForms.UpdateItemStatusForm.resources
+C:\Users\saval\source\repos\ram\Library\obj\Debug\Library.AdminForms.StausForms.UpdateLoanStatusForm.resources
+C:\Users\saval\source\repos\ram\Library\obj\Debug\Library.AdminForms.StausForms.UpdateReservationStatusForm.resources
+C:\Users\saval\source\repos\ram\Library\obj\Debug\Library.AdminForms.StausForms.AddReservationStatusForm.resources
+C:\Users\saval\source\repos\ram\Library\bin\Debug\System.Configuration.ConfigurationManager.dll
+C:\Users\saval\source\repos\ram\Library\bin\Debug\System.Security.AccessControl.dll
+C:\Users\saval\source\repos\ram\Library\bin\Debug\System.Security.Permissions.dll
+C:\Users\saval\source\repos\ram\Library\bin\Debug\System.Security.Principal.Windows.dll
+C:\Users\saval\source\repos\ram\Library\bin\Debug\System.Configuration.ConfigurationManager.xml
+C:\Users\saval\source\repos\ram\Library\bin\Debug\System.Security.AccessControl.xml
+C:\Users\saval\source\repos\ram\Library\bin\Debug\System.Security.Permissions.xml
+C:\Users\saval\source\repos\ram\Library\bin\Debug\System.Security.Principal.Windows.xml

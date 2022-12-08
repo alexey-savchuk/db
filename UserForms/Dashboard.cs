@@ -368,5 +368,21 @@ namespace Library.UserForms
                 }
             }
         }
+
+        private void SignOut_Click(object sender, EventArgs e)
+        {
+            MemberInfo.memberId = "";
+            MemberInfo.email = "";
+            MemberInfo.role = "";
+
+            LoginForm form = new LoginForm();
+            form.Show();
+            this.Hide();
+        }
+
+        private void Dashboard_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            Application.Exit();
+        }
     }
 }

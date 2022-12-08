@@ -66,6 +66,7 @@
             this.subjectId = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.subjectName = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.profile = new System.Windows.Forms.TabPage();
+            this.button1 = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
             this.changePasswordButton = new System.Windows.Forms.Button();
             this.profilePhone = new System.Windows.Forms.TextBox();
@@ -446,6 +447,7 @@
             // 
             // profile
             // 
+            this.profile.Controls.Add(this.button1);
             this.profile.Controls.Add(this.panel1);
             this.profile.Location = new System.Drawing.Point(4, 22);
             this.profile.Name = "profile";
@@ -454,6 +456,16 @@
             this.profile.TabIndex = 1;
             this.profile.Text = "Аккаунт";
             this.profile.UseVisualStyleBackColor = true;
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(676, 499);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(94, 30);
+            this.button1.TabIndex = 10;
+            this.button1.Text = "Выйти";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.SignOut_Click);
             // 
             // panel1
             // 
@@ -592,6 +604,7 @@
             this.Controls.Add(this.tabControl1);
             this.Name = "Dashboard";
             this.Text = "Dashboard";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Dashboard_FormClosing);
             this.tabControl1.ResumeLayout(false);
             this.members.ResumeLayout(false);
             this.books.ResumeLayout(false);
@@ -657,5 +670,6 @@
         private System.Windows.Forms.ListView subjectsList;
         private System.Windows.Forms.ColumnHeader subjectId;
         private System.Windows.Forms.ColumnHeader subjectName;
+        private System.Windows.Forms.Button button1;
     }
 }

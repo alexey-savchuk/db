@@ -29,6 +29,8 @@
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
+            this.profilePassword = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
             this.submitRegistrationButton = new System.Windows.Forms.Button();
             this.profilePhone = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
@@ -38,14 +40,16 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.profileLastName = new System.Windows.Forms.TextBox();
-            this.profilePassword = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
+            this.roleComboBox = new System.Windows.Forms.ComboBox();
+            this.label6 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.SystemColors.ControlDark;
+            this.panel1.Controls.Add(this.label6);
+            this.panel1.Controls.Add(this.roleComboBox);
             this.panel1.Controls.Add(this.profilePassword);
             this.panel1.Controls.Add(this.label1);
             this.panel1.Controls.Add(this.submitRegistrationButton);
@@ -59,17 +63,40 @@
             this.panel1.Controls.Add(this.profileLastName);
             this.panel1.Location = new System.Drawing.Point(63, 24);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(271, 405);
+            this.panel1.Size = new System.Drawing.Size(271, 470);
             this.panel1.TabIndex = 0;
+            // 
+            // profilePassword
+            // 
+            this.profilePassword.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.profilePassword.Location = new System.Drawing.Point(22, 278);
+            this.profilePassword.Name = "profilePassword";
+            this.profilePassword.Size = new System.Drawing.Size(231, 20);
+            this.profilePassword.TabIndex = 20;
+            // 
+            // label1
+            // 
+            this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.25F);
+            this.label1.Location = new System.Drawing.Point(19, 258);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(57, 17);
+            this.label1.TabIndex = 19;
+            this.label1.Text = "Пароль";
             // 
             // submitRegistrationButton
             // 
             this.submitRegistrationButton.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.submitRegistrationButton.Location = new System.Drawing.Point(22, 339);
+            this.submitRegistrationButton.Location = new System.Drawing.Point(22, 391);
             this.submitRegistrationButton.Name = "submitRegistrationButton";
-            this.submitRegistrationButton.Size = new System.Drawing.Size(231, 44);
+            this.submitRegistrationButton.Size = new System.Drawing.Size(231, 57);
             this.submitRegistrationButton.TabIndex = 18;
             this.submitRegistrationButton.Text = "Завершить регистрацию";
             this.submitRegistrationButton.UseVisualStyleBackColor = true;
@@ -167,34 +194,32 @@
             this.profileLastName.Size = new System.Drawing.Size(231, 20);
             this.profileLastName.TabIndex = 13;
             // 
-            // profilePassword
+            // roleComboBox
             // 
-            this.profilePassword.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.roleComboBox.FormattingEnabled = true;
+            this.roleComboBox.Location = new System.Drawing.Point(22, 335);
+            this.roleComboBox.Name = "roleComboBox";
+            this.roleComboBox.Size = new System.Drawing.Size(231, 21);
+            this.roleComboBox.TabIndex = 21;
+            // 
+            // label6
+            // 
+            this.label6.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.profilePassword.Location = new System.Drawing.Point(22, 278);
-            this.profilePassword.Name = "profilePassword";
-            this.profilePassword.Size = new System.Drawing.Size(231, 20);
-            this.profilePassword.TabIndex = 20;
-            // 
-            // label1
-            // 
-            this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.25F);
-            this.label1.Location = new System.Drawing.Point(19, 258);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(57, 17);
-            this.label1.TabIndex = 19;
-            this.label1.Text = "Пароль";
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.25F);
+            this.label6.Location = new System.Drawing.Point(19, 315);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(40, 17);
+            this.label6.TabIndex = 22;
+            this.label6.Text = "Роль";
             // 
             // RegisterForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(384, 461);
+            this.ClientSize = new System.Drawing.Size(384, 521);
             this.Controls.Add(this.panel1);
             this.Name = "RegisterForm";
             this.Text = "Регистрация читателя";
@@ -218,5 +243,7 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox profileLastName;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.ComboBox roleComboBox;
     }
 }
