@@ -18,10 +18,17 @@ namespace Library
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 
-            LoginForm form = new LoginForm();
-            form.Show();
+            try
+            {
+                LoginForm form = new LoginForm();
+                form.Show();
 
-            Application.Run();
+                Application.Run();
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.StackTrace);
+            }
         }
     }
 }

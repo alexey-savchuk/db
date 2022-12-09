@@ -218,13 +218,11 @@ namespace Library.UserForms
         {
             reservationsList.Items.Clear();
 
-            String email = MemberInfo.email;
-
             try
             {
                 database.OpenConnection();
 
-                string query = $"SELECT * FROM member_and_reservation WHERE email = N'{email}'";
+                string query = $"SELECT * FROM member_and_reservation WHERE email = N'{MemberInfo.memberId}'";
                 SqlCommand cmd = new SqlCommand(query, database.GetConnection());
 
 

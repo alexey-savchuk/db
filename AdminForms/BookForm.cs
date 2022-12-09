@@ -322,7 +322,7 @@ namespace Library.AdminForms
 
         private void DeleteBookItemButton_Click(object sender, EventArgs e)
         {
-            if (bookItemsList.SelectedItems.Count > 1)
+            if (bookItemsList.SelectedItems.Count > 0)
             {
                 database.OpenConnection();
 
