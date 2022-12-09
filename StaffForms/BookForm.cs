@@ -14,12 +14,14 @@ namespace Library.StaffForms
         List<String> selectedAuthorsIds = new List<String>(){};
         String selectedSubjectId = "";
 
-        public BookForm(String bookId, String bookTitle)
+        public BookForm(String bookId, String bookTitle, String date)
         {
             InitializeComponent();
             this.bookId = bookId;
 
             titleTextBox.Text = bookTitle;
+            dateTextBox.Text = date;
+
             InitAuthorsList();
             InitSubjectsList();
 

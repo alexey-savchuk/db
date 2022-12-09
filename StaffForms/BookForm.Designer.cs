@@ -57,6 +57,8 @@
             this.deleteBookItemButton = new System.Windows.Forms.Button();
             this.addBookItemButton = new System.Windows.Forms.Button();
             this.updateBookItemsButton = new System.Windows.Forms.Button();
+            this.dateTextBox = new System.Windows.Forms.TextBox();
+            this.label4 = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.book.SuspendLayout();
             this.bookItems.SuspendLayout();
@@ -100,6 +102,8 @@
             // 
             // book
             // 
+            this.book.Controls.Add(this.label4);
+            this.book.Controls.Add(this.dateTextBox);
             this.book.Controls.Add(this.selectSubjectsButton);
             this.book.Controls.Add(this.subjectSearch);
             this.book.Controls.Add(this.searchSubjectsButton);
@@ -363,6 +367,26 @@
             this.updateBookItemsButton.UseVisualStyleBackColor = true;
             this.updateBookItemsButton.Click += new System.EventHandler(this.UpdateBookItems_Click);
             // 
+            // dateTextBox
+            // 
+            this.dateTextBox.Location = new System.Drawing.Point(500, 60);
+            this.dateTextBox.Name = "dateTextBox";
+            this.dateTextBox.Size = new System.Drawing.Size(257, 20);
+            this.dateTextBox.TabIndex = 29;
+            // 
+            // label4
+            // 
+            this.label4.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.25F);
+            this.label4.Location = new System.Drawing.Point(497, 40);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(106, 17);
+            this.label4.TabIndex = 30;
+            this.label4.Text = "Год пубикации";
+            // 
             // BookForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -410,5 +434,7 @@
         private System.Windows.Forms.ColumnHeader authorFirstName;
         private System.Windows.Forms.ColumnHeader authorLastName;
         private System.Windows.Forms.Button deleteBookItemButton;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.TextBox dateTextBox;
     }
 }

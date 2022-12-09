@@ -242,5 +242,91 @@ namespace Library.AdminForms
                 throw;
             }
         }
+
+        private void DeleteReservations_Click(object sender, EventArgs e)
+        {
+            if (reservationsList.SelectedItems.Count > 0)
+            {
+                database.OpenConnection();
+
+                SqlConnection connection = database.GetConnection();
+                SqlTransaction transaction = connection.BeginTransaction();
+
+                try
+                {
+                    SqlCommand cmd = new SqlCommand();
+                    cmd.Connection = connection;
+                    cmd.Transaction = transaction;
+
+                    foreach (ListViewItem item in reservationsList.SelectedItems)
+                    {
+                        String id = item.SubItems[0].Text;
+
+                        cmd.CommandText = $"DELETE FROM reservation WHERE reservation_id = {id}";
+                        cmd.ExecuteNonQuery();
+                    }
+
+                    transaction.Commit();
+                    RenderReservationsList();
+                }
+                catch
+                {
+                    transaction.Rollback();
+                    MessageBox.Show("Не удается завершить удаление", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    throw;
+                }
+                finally
+                {
+                    database.CloseConnection();
+                }
+            }
+            else
+            {
+                MessageBox.Show("Выберите заявки для удаления", "Неверный ввод", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
+
+        private void DeleteLoans_Click(object sender, EventArgs e)
+        {
+            if (loansList.SelectedItems.Count > 0)
+            {
+                database.OpenConnection();
+
+                SqlConnection connection = database.GetConnection();
+                SqlTransaction transaction = connection.BeginTransaction();
+
+                try
+                {
+                    SqlCommand cmd = new SqlCommand();
+                    cmd.Connection = connection;
+                    cmd.Transaction = transaction;
+
+                    foreach (ListViewItem item in loansList.SelectedItems)
+                    {
+                        String id = item.SubItems[0].Text;
+
+                        cmd.CommandText = $"DELETE FROM loan WHERE loan_id = {id}";
+                        cmd.ExecuteNonQuery();
+                    }
+
+                    transaction.Commit();
+                    RenderLoansList();
+                }
+                catch
+                {
+                    transaction.Rollback();
+                    MessageBox.Show("Не удается завершить удаление", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    throw;
+                }
+                finally
+                {
+                    database.CloseConnection();
+                }
+            }
+            else
+            {
+                MessageBox.Show("Выберите записи для удаления", "Неверный ввод", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
     }
 }

@@ -67,6 +67,7 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.profileLastName = new System.Windows.Forms.TextBox();
+            this.bookDate = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.tabControl.SuspendLayout();
             this.booksTab.SuspendLayout();
             this.reservationsTab.SuspendLayout();
@@ -122,7 +123,8 @@
             this.bookId,
             this.bookTitle,
             this.bookAuthors,
-            this.bookSubject});
+            this.bookSubject,
+            this.bookDate});
             this.booksListView.FullRowSelect = true;
             this.booksListView.HideSelection = false;
             this.booksListView.Location = new System.Drawing.Point(20, 127);
@@ -142,19 +144,19 @@
             // 
             this.bookTitle.DisplayIndex = 0;
             this.bookTitle.Text = "Название";
-            this.bookTitle.Width = 195;
+            this.bookTitle.Width = 153;
             // 
             // bookAuthors
             // 
             this.bookAuthors.DisplayIndex = 1;
             this.bookAuthors.Text = "Автор(ы)";
-            this.bookAuthors.Width = 270;
+            this.bookAuthors.Width = 284;
             // 
             // bookSubject
             // 
             this.bookSubject.DisplayIndex = 2;
             this.bookSubject.Text = "Предмет";
-            this.bookSubject.Width = 278;
+            this.bookSubject.Width = 135;
             // 
             // reserveButton
             // 
@@ -472,6 +474,11 @@
             this.profileLastName.Size = new System.Drawing.Size(194, 20);
             this.profileLastName.TabIndex = 3;
             // 
+            // bookDate
+            // 
+            this.bookDate.Text = "Год публикации";
+            this.bookDate.Width = 95;
+            // 
             // Dashboard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -534,5 +541,6 @@
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Button changePasswordButton;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.ColumnHeader bookDate;
     }
 }

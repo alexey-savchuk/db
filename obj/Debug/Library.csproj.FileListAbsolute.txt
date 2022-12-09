@@ -30,7 +30,6 @@ C:\Users\saval\source\repos\ram\Library\obj\Debug\Library.StaffForms.SubjectForm
 C:\Users\saval\source\repos\ram\Library\obj\Debug\Library.StaffForms.BookItemForm.resources
 C:\Users\saval\source\repos\ram\Library\obj\Debug\Library.StaffForms.AddBookItemForm.resources
 C:\Users\saval\source\repos\ram\Library\obj\Debug\Library.AdminForms.AddAuthorForm.resources
-C:\Users\saval\source\repos\ram\Library\obj\Debug\Library.AdminForms.AddBookForm.resources
 C:\Users\saval\source\repos\ram\Library\obj\Debug\Library.AdminForms.AddBookItemForm.resources
 C:\Users\saval\source\repos\ram\Library\obj\Debug\Library.AdminForms.AddSubjectForm.resources
 C:\Users\saval\source\repos\ram\Library\obj\Debug\Library.AdminForms.AuthorForm.resources

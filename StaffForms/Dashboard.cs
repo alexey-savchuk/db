@@ -185,13 +185,15 @@ namespace Library.StaffForms
             public String title { get; set; }
             public List<String> authors { get; set; } = new List<string>();
             public String subject { get; set; }
+            public String date { get; set; }
 
-            public BookRecord(String id, String title, List<String> authors, String subject)
+            public BookRecord(String id, String title, List<String> authors, String subject, string date)
             {
                 this.id = id;
                 this.title = title;
                 this.authors = authors;
                 this.subject = subject;
+                this.date = date;
             }
         }
 
@@ -234,8 +236,14 @@ namespace Library.StaffForms
                     {
                         string id = reader["book_id"].ToString();
                         string title = reader["title"].ToString();
-                        string author = reader["first_name"].ToString() + " " + reader["last_name"].ToString();
+
+                        string author = Convert.ToString(reader["first_name"])
+                            + " " + Convert.ToString(reader["last_name"]);
+                        
                         string subject = reader["subject_name"].ToString();
+                        string date = reader["publication_date"].ToString();
+
+                        date = date.Split(' ')[0].Split('.')[2];
 
                         bool isExists = false;
                         foreach (BookRecord book in books)
@@ -249,7 +257,7 @@ namespace Library.StaffForms
 
                         if (!isExists)
                         {
-                            books.Add(new BookRecord(id, title, new List<String>() { author }, subject));
+                            books.Add(new BookRecord(id, title, new List<String>() { author }, subject, date));
                         }
                     }
                 }
@@ -268,6 +276,7 @@ namespace Library.StaffForms
 
                     item.SubItems.Add(authors);
                     item.SubItems.Add(book.subject);
+                    item.SubItems.Add(book.date);
 
                     booksList.Items.Add(item);
                 }
@@ -290,8 +299,9 @@ namespace Library.StaffForms
             {
                 String bookId = booksList.SelectedItems[0].SubItems[0].Text;
                 String bookTitle = booksList.SelectedItems[0].SubItems[1].Text;
+                String date = booksList.SelectedItems[0].SubItems[4].Text;
 
-                using (BookForm form = new BookForm(bookId, bookTitle))
+                using (BookForm form = new BookForm(bookId, bookTitle, date))
                 {
                     form.ShowDialog();
                 }
@@ -302,7 +312,12 @@ namespace Library.StaffForms
 
         private void AddBookButton_Click(object sender, EventArgs e)
         {
+            using (AddBookForm form = new AddBookForm())
+            {
+                form.ShowDialog();
+            }
 
+            RenderBooksList();
         }
 
         private void AddAuthorButton_Click(object sender, EventArgs e)

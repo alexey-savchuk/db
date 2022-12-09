@@ -223,13 +223,15 @@ namespace Library.AdminForms
             public String title { get; set; }
             public List<String> authors { get; set; } = new List<string>();
             public String subject { get; set; }
+            public String date { get; set; }
 
-            public BookRecord(String id, String title, List<String> authors, String subject)
+            public BookRecord(String id, String title, List<String> authors, String subject, String date)
             {
                 this.id = id;
                 this.title = title;
                 this.authors = authors;
                 this.subject = subject;
+                this.date = date;
             }
         }
 
@@ -272,8 +274,14 @@ namespace Library.AdminForms
                     {
                         string id = reader["book_id"].ToString();
                         string title = reader["title"].ToString();
-                        string author = reader["first_name"].ToString() + " " + reader["last_name"].ToString();
+                        
+                        string author = Convert.ToString(reader["first_name"])
+                            + " " + Convert.ToString(reader["last_name"]);
+
                         string subject = reader["subject_name"].ToString();
+                        string date = reader["publication_date"].ToString();
+
+                        date = date.Split(' ')[0].Split('.')[2];
 
                         bool isExists = false;
                         foreach (BookRecord book in books)
@@ -287,7 +295,7 @@ namespace Library.AdminForms
 
                         if (!isExists)
                         {
-                            books.Add(new BookRecord(id, title, new List<String>() { author }, subject));
+                            books.Add(new BookRecord(id, title, new List<String>() { author }, subject, date));
                         }
                     }
                 }
@@ -306,6 +314,7 @@ namespace Library.AdminForms
 
                     item.SubItems.Add(authors);
                     item.SubItems.Add(book.subject);
+                    item.SubItems.Add(book.date);
 
                     booksList.Items.Add(item);
                 }
@@ -328,8 +337,9 @@ namespace Library.AdminForms
             {
                 String bookId = booksList.SelectedItems[0].SubItems[0].Text;
                 String bookTitle = booksList.SelectedItems[0].SubItems[1].Text;
+                String date = booksList.SelectedItems[0].SubItems[4].Text;
 
-                using (BookForm form = new BookForm(bookId, bookTitle))
+                using (BookForm form = new BookForm(bookId, bookTitle, date))
                 {
                     form.ShowDialog();
                 }
@@ -816,6 +826,170 @@ namespace Library.AdminForms
         private void Dashboard_FormClosing(object sender, FormClosingEventArgs e)
         {
             Application.Exit();
+        }
+
+        private void DeleteBooks_Click(object sender, EventArgs e)
+        {
+            if (booksList.SelectedItems.Count > 0)
+            {
+                database.OpenConnection();
+
+                SqlConnection connection = database.GetConnection();
+                SqlTransaction transaction = connection.BeginTransaction();
+
+                try
+                {
+                    SqlCommand cmd = new SqlCommand();
+                    cmd.Connection = connection;
+                    cmd.Transaction = transaction;
+
+                    foreach (ListViewItem item in booksList.SelectedItems)
+                    {
+                        String id = item.SubItems[0].Text;
+
+                        cmd.CommandText = $"DELETE FROM book WHERE book_id = {id}";
+                        cmd.ExecuteNonQuery();
+                    }
+
+                    transaction.Commit();
+                    RenderBooksList();
+                }
+                catch
+                {
+                    transaction.Rollback();
+                    MessageBox.Show("Не удается завершить удаление", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    throw;
+                }
+                finally
+                {
+                    database.CloseConnection();
+                }
+            }
+            else
+            {
+                MessageBox.Show("Выберите книги для удаления", "Неверный ввод", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
+
+        private void DeleteAuthors_Click(object sender, EventArgs e)
+        {
+            if (authorsList.SelectedItems.Count > 0)
+            {
+                database.OpenConnection();
+
+                SqlConnection connection = database.GetConnection();
+                SqlTransaction transaction = connection.BeginTransaction();
+
+                try
+                {
+                    SqlCommand cmd = new SqlCommand();
+                    cmd.Connection = connection;
+                    cmd.Transaction = transaction;
+
+                    foreach (ListViewItem item in authorsList.SelectedItems)
+                    {
+                        String id = item.SubItems[0].Text;
+
+                        cmd.CommandText = $"DELETE FROM author WHERE author_id = {id}";
+                        cmd.ExecuteNonQuery();
+                    }
+
+                    transaction.Commit();
+                    RenderAuthorsList();
+                    RenderBooksList();
+                }
+                catch
+                {
+                    transaction.Rollback();
+                    MessageBox.Show("Не удается завершить удаление", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    throw;
+                }
+                finally
+                {
+                    database.CloseConnection();
+                }
+            }
+            else
+            {
+                MessageBox.Show("Выберите авторов для удаления", "Неверный ввод", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
+
+        private void DeleteSubjects_Click(object sender, EventArgs e)
+        {
+            if (subjectsList.SelectedItems.Count > 0)
+            {
+                database.OpenConnection();
+
+                SqlConnection connection = database.GetConnection();
+                SqlTransaction transaction = connection.BeginTransaction();
+
+                try
+                {
+                    SqlCommand cmd = new SqlCommand();
+                    cmd.Connection = connection;
+                    cmd.Transaction = transaction;
+
+                    foreach (ListViewItem item in subjectsList.SelectedItems)
+                    {
+                        String id = item.SubItems[0].Text;
+
+                        cmd.CommandText = $"DELETE FROM subject WHERE subject_id = {id}";
+                        cmd.ExecuteNonQuery();
+                    }
+
+                    transaction.Commit();
+                    RenderSubjectList();
+                    RenderBooksList();
+                }
+                catch
+                {
+                    transaction.Rollback();
+                    MessageBox.Show("Не удается завершить удаление", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    throw;
+                }
+                finally
+                {
+                    database.CloseConnection();
+                }
+            }
+            else
+            {
+                MessageBox.Show("Выберите предметы для удаления", "Неверный ввод", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
+
+        private void UpdateProfileButton_Click(object sender, EventArgs e)
+        {
+            String firstName = profileFirstName.Text;
+            String lastName = profileLastName.Text;
+            String email = profileEmail.Text;
+            String phone = profilePhone.Text;
+
+            try
+            {
+                database.OpenConnection();
+
+                string query = $"UPDATE member SET first_name = N'{firstName}', last_name = N'{lastName}'," +
+                               $" email = N'{email}', phone = N'{phone}' WHERE member_id = {MemberInfo.memberId}";
+
+                SqlCommand cmd = new SqlCommand(query, database.GetConnection());
+                cmd.ExecuteNonQuery();
+
+                MemberInfo.email = email;
+
+                RenderProfile();
+                MessageBox.Show("Данные профиля обновлены", "Успешно", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            catch
+            {
+                MessageBox.Show("Не удалось обновить данные профиля", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                throw;
+            }
+            finally
+            {
+                database.CloseConnection();
+            }
         }
     }
 }

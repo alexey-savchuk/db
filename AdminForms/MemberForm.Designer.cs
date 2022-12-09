@@ -41,7 +41,7 @@
             this.label4 = new System.Windows.Forms.Label();
             this.profileLastName = new System.Windows.Forms.TextBox();
             this.reservations = new System.Windows.Forms.TabPage();
-            this.createLoanButton = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
             this.updateReservationsButton = new System.Windows.Forms.Button();
             this.reservationsList = new System.Windows.Forms.ListView();
             this.reservationId = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -49,6 +49,7 @@
             this.reservationDate = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.reservationStatus = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.loans = new System.Windows.Forms.TabPage();
+            this.button2 = new System.Windows.Forms.Button();
             this.updateLoansButton = new System.Windows.Forms.Button();
             this.loansList = new System.Windows.Forms.ListView();
             this.loanId = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -212,7 +213,7 @@
             // 
             // reservations
             // 
-            this.reservations.Controls.Add(this.createLoanButton);
+            this.reservations.Controls.Add(this.button1);
             this.reservations.Controls.Add(this.updateReservationsButton);
             this.reservations.Controls.Add(this.reservationsList);
             this.reservations.Location = new System.Drawing.Point(4, 22);
@@ -223,15 +224,15 @@
             this.reservations.Text = "Заявки";
             this.reservations.UseVisualStyleBackColor = true;
             // 
-            // createLoanButton
+            // button1
             // 
-            this.createLoanButton.Location = new System.Drawing.Point(681, 88);
-            this.createLoanButton.Name = "createLoanButton";
-            this.createLoanButton.Size = new System.Drawing.Size(75, 49);
-            this.createLoanButton.TabIndex = 3;
-            this.createLoanButton.Text = "Выдать книгу";
-            this.createLoanButton.UseVisualStyleBackColor = true;
-            this.createLoanButton.Click += new System.EventHandler(this.CreateLoanButton_Click);
+            this.button1.Location = new System.Drawing.Point(681, 79);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 49);
+            this.button1.TabIndex = 4;
+            this.button1.Text = "Удалить";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.DeleteReservations_Click);
             // 
             // updateReservationsButton
             // 
@@ -260,7 +261,7 @@
             this.reservationsList.View = System.Windows.Forms.View.Details;
             this.reservationsList.DoubleClick += new System.EventHandler(this.ReservationsList_DoubleClick);
             // 
-            // loanId
+            // reservationId
             // 
             this.reservationId.Text = "loanId";
             this.reservationId.Width = 0;
@@ -282,6 +283,7 @@
             // 
             // loans
             // 
+            this.loans.Controls.Add(this.button2);
             this.loans.Controls.Add(this.updateLoansButton);
             this.loans.Controls.Add(this.loansList);
             this.loans.Location = new System.Drawing.Point(4, 22);
@@ -291,9 +293,19 @@
             this.loans.Text = "Взятые книги";
             this.loans.UseVisualStyleBackColor = true;
             // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(684, 79);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(75, 49);
+            this.button2.TabIndex = 6;
+            this.button2.Text = "Удалить";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.DeleteLoans_Click);
+            // 
             // updateLoansButton
             // 
-            this.updateLoansButton.Location = new System.Drawing.Point(693, 24);
+            this.updateLoansButton.Location = new System.Drawing.Point(684, 24);
             this.updateLoansButton.Name = "updateLoansButton";
             this.updateLoansButton.Size = new System.Drawing.Size(75, 49);
             this.updateLoansButton.TabIndex = 5;
@@ -310,9 +322,9 @@
             this.loanStatus});
             this.loansList.FullRowSelect = true;
             this.loansList.HideSelection = false;
-            this.loansList.Location = new System.Drawing.Point(37, 24);
+            this.loansList.Location = new System.Drawing.Point(26, 24);
             this.loansList.Name = "loansList";
-            this.loansList.Size = new System.Drawing.Size(634, 468);
+            this.loansList.Size = new System.Drawing.Size(641, 468);
             this.loansList.TabIndex = 4;
             this.loansList.UseCompatibleStateImageBehavior = false;
             this.loansList.View = System.Windows.Forms.View.Details;
@@ -384,6 +396,7 @@
         private System.Windows.Forms.ColumnHeader loanStatus;
         private System.Windows.Forms.Button updateReservationsButton;
         private System.Windows.Forms.Button updateLoansButton;
-        private System.Windows.Forms.Button createLoanButton;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button button2;
     }
 }

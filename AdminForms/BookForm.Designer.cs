@@ -33,6 +33,8 @@
             this.temBarcode = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.book = new System.Windows.Forms.TabPage();
+            this.label4 = new System.Windows.Forms.Label();
+            this.dateTextBox = new System.Windows.Forms.TextBox();
             this.selectSubjectsButton = new System.Windows.Forms.Button();
             this.subjectSearch = new System.Windows.Forms.TextBox();
             this.searchSubjectsButton = new System.Windows.Forms.Button();
@@ -55,7 +57,6 @@
             this.label1 = new System.Windows.Forms.Label();
             this.bookItems = new System.Windows.Forms.TabPage();
             this.deleteBookItemButton = new System.Windows.Forms.Button();
-            this.addBookItemButton = new System.Windows.Forms.Button();
             this.updateBookItemsButton = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.book.SuspendLayout();
@@ -100,6 +101,8 @@
             // 
             // book
             // 
+            this.book.Controls.Add(this.label4);
+            this.book.Controls.Add(this.dateTextBox);
             this.book.Controls.Add(this.selectSubjectsButton);
             this.book.Controls.Add(this.subjectSearch);
             this.book.Controls.Add(this.searchSubjectsButton);
@@ -122,6 +125,26 @@
             this.book.TabIndex = 1;
             this.book.Text = "Книга";
             this.book.UseVisualStyleBackColor = true;
+            // 
+            // label4
+            // 
+            this.label4.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.25F);
+            this.label4.Location = new System.Drawing.Point(497, 40);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(114, 17);
+            this.label4.TabIndex = 30;
+            this.label4.Text = "Год публикации";
+            // 
+            // dateTextBox
+            // 
+            this.dateTextBox.Location = new System.Drawing.Point(500, 60);
+            this.dateTextBox.Name = "dateTextBox";
+            this.dateTextBox.Size = new System.Drawing.Size(257, 20);
+            this.dateTextBox.TabIndex = 29;
             // 
             // selectSubjectsButton
             // 
@@ -322,7 +345,6 @@
             // bookItems
             // 
             this.bookItems.Controls.Add(this.deleteBookItemButton);
-            this.bookItems.Controls.Add(this.addBookItemButton);
             this.bookItems.Controls.Add(this.updateBookItemsButton);
             this.bookItems.Controls.Add(this.bookItemsList);
             this.bookItems.Location = new System.Drawing.Point(4, 22);
@@ -335,23 +357,13 @@
             // 
             // deleteBookItemButton
             // 
-            this.deleteBookItemButton.Location = new System.Drawing.Point(585, 187);
+            this.deleteBookItemButton.Location = new System.Drawing.Point(585, 133);
             this.deleteBookItemButton.Name = "deleteBookItemButton";
             this.deleteBookItemButton.Size = new System.Drawing.Size(99, 48);
             this.deleteBookItemButton.TabIndex = 3;
             this.deleteBookItemButton.Text = "Удалить";
             this.deleteBookItemButton.UseVisualStyleBackColor = true;
             this.deleteBookItemButton.Click += new System.EventHandler(this.DeleteBookItemButton_Click);
-            // 
-            // addBookItemButton
-            // 
-            this.addBookItemButton.Location = new System.Drawing.Point(585, 133);
-            this.addBookItemButton.Name = "addBookItemButton";
-            this.addBookItemButton.Size = new System.Drawing.Size(99, 39);
-            this.addBookItemButton.TabIndex = 2;
-            this.addBookItemButton.Text = "Добавить";
-            this.addBookItemButton.UseVisualStyleBackColor = true;
-            this.addBookItemButton.Click += new System.EventHandler(this.AddBookItemButton_Click);
             // 
             // updateBookItemsButton
             // 
@@ -387,7 +399,6 @@
         private System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.TabPage book;
         private System.Windows.Forms.TabPage bookItems;
-        private System.Windows.Forms.Button addBookItemButton;
         private System.Windows.Forms.Button updateBookItemsButton;
         private System.Windows.Forms.TextBox subjectTextBox;
         private System.Windows.Forms.Label label3;
@@ -410,5 +421,7 @@
         private System.Windows.Forms.ColumnHeader authorFirstName;
         private System.Windows.Forms.ColumnHeader authorLastName;
         private System.Windows.Forms.Button deleteBookItemButton;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.TextBox dateTextBox;
     }
 }

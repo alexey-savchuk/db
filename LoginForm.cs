@@ -15,6 +15,9 @@ namespace Library
 {
     public partial class LoginForm : Form
     {
+        Database database = new Database();
+        PasswordEncoder encoder = new PasswordEncoder();
+
         public LoginForm()
         {
             InitializeComponent();
@@ -25,23 +28,21 @@ namespace Library
             string email = emailTextBox.Text.Trim();
             string password = passwordTextBox.Text.Trim();
 
-            if (!IsValidEmail(email) || !IsValidPassword(password))
+            if (!Validation.IsValidEmail(email))
             {
-                MessageBox.Show("Ошибка", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Неверный формат e-mail", "Неверный ввод", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
-            Database db = new Database();
-
             try
             {
-                db.OpenConnection();
+                database.OpenConnection();
 
                 string query = $"SELECT member_id, email, role_name FROM member M" +
                                $" INNER JOIN member_role R ON R.role_id = M.role_id" +
-                               $" WHERE M.email = N'{email}'";
+                               $" WHERE M.email = N'{email}' AND M.password = N'{encoder.Encode(password)}'";
 
-                SqlCommand cmd = new SqlCommand(query, db.GetConnection());
+                SqlCommand cmd = new SqlCommand(query, database.GetConnection());
                 SqlDataReader reader = cmd.ExecuteReader();
 
                 if (reader.HasRows)
@@ -54,14 +55,18 @@ namespace Library
                 }
                 else
                 {
-                    MessageBox.Show("Не удалось войти в систему", "Fail", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show("Пользователь не найден", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
             }
             catch
             {
-                db.CloseConnection();
-                return;
+                MessageBox.Show("Не удалось войти в систему", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                throw;
+            }
+            finally
+            {
+                database.CloseConnection();
             }
 
             if (MemberInfo.role == "USER")

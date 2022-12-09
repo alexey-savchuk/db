@@ -40,7 +40,6 @@
             this.memberEmail = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.books = new System.Windows.Forms.TabPage();
             this.button7 = new System.Windows.Forms.Button();
-            this.addBookButton = new System.Windows.Forms.Button();
             this.searchComboBox = new System.Windows.Forms.ComboBox();
             this.searchTextBox = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
@@ -52,7 +51,6 @@
             this.bookSubject = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.authors = new System.Windows.Forms.TabPage();
             this.button8 = new System.Windows.Forms.Button();
-            this.addAuthorButton = new System.Windows.Forms.Button();
             this.authorSearch = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.searchAuthorsButton = new System.Windows.Forms.Button();
@@ -62,7 +60,6 @@
             this.authorLastName = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.subjects = new System.Windows.Forms.TabPage();
             this.button9 = new System.Windows.Forms.Button();
-            this.addSubjectButton = new System.Windows.Forms.Button();
             this.subjectSearch = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
             this.searchSubjectsButton = new System.Windows.Forms.Button();
@@ -101,6 +98,7 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.profileLastName = new System.Windows.Forms.TextBox();
+            this.bookDate = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.tabControl1.SuspendLayout();
             this.members.SuspendLayout();
             this.books.SuspendLayout();
@@ -213,7 +211,6 @@
             // books
             // 
             this.books.Controls.Add(this.button7);
-            this.books.Controls.Add(this.addBookButton);
             this.books.Controls.Add(this.searchComboBox);
             this.books.Controls.Add(this.searchTextBox);
             this.books.Controls.Add(this.label1);
@@ -228,22 +225,13 @@
             // 
             // button7
             // 
-            this.button7.Location = new System.Drawing.Point(680, 179);
+            this.button7.Location = new System.Drawing.Point(681, 98);
             this.button7.Name = "button7";
             this.button7.Size = new System.Drawing.Size(72, 75);
             this.button7.TabIndex = 11;
             this.button7.Text = "Удалить";
             this.button7.UseVisualStyleBackColor = true;
-            // 
-            // addBookButton
-            // 
-            this.addBookButton.Location = new System.Drawing.Point(680, 98);
-            this.addBookButton.Name = "addBookButton";
-            this.addBookButton.Size = new System.Drawing.Size(72, 75);
-            this.addBookButton.TabIndex = 10;
-            this.addBookButton.Text = "Добавить";
-            this.addBookButton.UseVisualStyleBackColor = true;
-            this.addBookButton.Click += new System.EventHandler(this.AddBookButton_Click);
+            this.button7.Click += new System.EventHandler(this.DeleteBooks_Click);
             // 
             // searchComboBox
             // 
@@ -292,10 +280,11 @@
             this.bookId,
             this.bookTitle,
             this.bookAuthors,
-            this.bookSubject});
+            this.bookSubject,
+            this.bookDate});
             this.booksList.FullRowSelect = true;
             this.booksList.HideSelection = false;
-            this.booksList.Location = new System.Drawing.Point(31, 98);
+            this.booksList.Location = new System.Drawing.Point(30, 98);
             this.booksList.Name = "booksList";
             this.booksList.Size = new System.Drawing.Size(625, 355);
             this.booksList.TabIndex = 5;
@@ -313,24 +302,23 @@
             // 
             this.bookTitle.DisplayIndex = 0;
             this.bookTitle.Text = "Название";
-            this.bookTitle.Width = 195;
+            this.bookTitle.Width = 177;
             // 
             // bookAuthors
             // 
             this.bookAuthors.DisplayIndex = 1;
             this.bookAuthors.Text = "Автор(ы)";
-            this.bookAuthors.Width = 284;
+            this.bookAuthors.Width = 224;
             // 
             // bookSubject
             // 
             this.bookSubject.DisplayIndex = 2;
             this.bookSubject.Text = "Предмет";
-            this.bookSubject.Width = 119;
+            this.bookSubject.Width = 114;
             // 
             // authors
             // 
             this.authors.Controls.Add(this.button8);
-            this.authors.Controls.Add(this.addAuthorButton);
             this.authors.Controls.Add(this.authorSearch);
             this.authors.Controls.Add(this.label6);
             this.authors.Controls.Add(this.searchAuthorsButton);
@@ -344,22 +332,13 @@
             // 
             // button8
             // 
-            this.button8.Location = new System.Drawing.Point(677, 205);
+            this.button8.Location = new System.Drawing.Point(678, 124);
             this.button8.Name = "button8";
             this.button8.Size = new System.Drawing.Size(72, 75);
             this.button8.TabIndex = 17;
             this.button8.Text = "Удалить";
             this.button8.UseVisualStyleBackColor = true;
-            // 
-            // addAuthorButton
-            // 
-            this.addAuthorButton.Location = new System.Drawing.Point(677, 124);
-            this.addAuthorButton.Name = "addAuthorButton";
-            this.addAuthorButton.Size = new System.Drawing.Size(72, 75);
-            this.addAuthorButton.TabIndex = 16;
-            this.addAuthorButton.Text = "Добавить";
-            this.addAuthorButton.UseVisualStyleBackColor = true;
-            this.addAuthorButton.Click += new System.EventHandler(this.AddAuthorButton_Click);
+            this.button8.Click += new System.EventHandler(this.DeleteAuthors_Click);
             // 
             // authorSearch
             // 
@@ -423,7 +402,6 @@
             // subjects
             // 
             this.subjects.Controls.Add(this.button9);
-            this.subjects.Controls.Add(this.addSubjectButton);
             this.subjects.Controls.Add(this.subjectSearch);
             this.subjects.Controls.Add(this.label7);
             this.subjects.Controls.Add(this.searchSubjectsButton);
@@ -437,22 +415,13 @@
             // 
             // button9
             // 
-            this.button9.Location = new System.Drawing.Point(677, 205);
+            this.button9.Location = new System.Drawing.Point(679, 124);
             this.button9.Name = "button9";
             this.button9.Size = new System.Drawing.Size(72, 75);
             this.button9.TabIndex = 22;
             this.button9.Text = "Удалить";
             this.button9.UseVisualStyleBackColor = true;
-            // 
-            // addSubjectButton
-            // 
-            this.addSubjectButton.Location = new System.Drawing.Point(677, 124);
-            this.addSubjectButton.Name = "addSubjectButton";
-            this.addSubjectButton.Size = new System.Drawing.Size(72, 75);
-            this.addSubjectButton.TabIndex = 21;
-            this.addSubjectButton.Text = "Добавить";
-            this.addSubjectButton.UseVisualStyleBackColor = true;
-            this.addSubjectButton.Click += new System.EventHandler(this.AddSubjectButton_Click);
+            this.button9.Click += new System.EventHandler(this.DeleteSubjects_Click);
             // 
             // subjectSearch
             // 
@@ -744,6 +713,7 @@
             this.updateProfileButton.TabIndex = 10;
             this.updateProfileButton.Text = "Обновить";
             this.updateProfileButton.UseVisualStyleBackColor = true;
+            this.updateProfileButton.Click += new System.EventHandler(this.UpdateProfileButton_Click);
             // 
             // changePasswordButton
             // 
@@ -763,7 +733,7 @@
             this.profilePhone.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.profilePhone.Location = new System.Drawing.Point(47, 244);
+            this.profilePhone.Location = new System.Drawing.Point(47, 239);
             this.profilePhone.Name = "profilePhone";
             this.profilePhone.Size = new System.Drawing.Size(194, 20);
             this.profilePhone.TabIndex = 7;
@@ -788,7 +758,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.25F);
-            this.label5.Location = new System.Drawing.Point(44, 224);
+            this.label5.Location = new System.Drawing.Point(44, 219);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(68, 17);
             this.label5.TabIndex = 6;
@@ -850,6 +820,11 @@
             this.profileLastName.Size = new System.Drawing.Size(194, 20);
             this.profileLastName.TabIndex = 3;
             // 
+            // bookDate
+            // 
+            this.bookDate.Text = "Год публикации";
+            this.bookDate.Width = 100;
+            // 
             // Dashboard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -908,9 +883,7 @@
         private System.Windows.Forms.TextBox searchTextBox;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button searchButton;
-        private System.Windows.Forms.Button addBookButton;
         private System.Windows.Forms.TabPage authors;
-        private System.Windows.Forms.Button addAuthorButton;
         private System.Windows.Forms.TextBox authorSearch;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Button searchAuthorsButton;
@@ -919,7 +892,6 @@
         private System.Windows.Forms.ColumnHeader authorFirstName;
         private System.Windows.Forms.TabPage subjects;
         private System.Windows.Forms.ColumnHeader authorLastName;
-        private System.Windows.Forms.Button addSubjectButton;
         private System.Windows.Forms.TextBox subjectSearch;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Button searchSubjectsButton;
@@ -951,5 +923,6 @@
         private System.Windows.Forms.Button button8;
         private System.Windows.Forms.Button button9;
         private System.Windows.Forms.Button button10;
+        private System.Windows.Forms.ColumnHeader bookDate;
     }
 }

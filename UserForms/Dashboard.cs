@@ -18,13 +18,15 @@ namespace Library.UserForms
             public String title { get; set; }
             public List<String> authors { get; set; } = new List<string>();
             public String subject { get; set; }
+            public String date { get; set; }
 
-            public BookRecord(String id, String title, List<String> authors, String subject)
+            public BookRecord(String id, String title, List<String> authors, String subject, String date)
             {
                 this.id = id;
                 this.title = title;
                 this.authors = authors;
                 this.subject = subject;
+                this.date = date;
             }
         }
 
@@ -81,6 +83,9 @@ namespace Library.UserForms
                         string title = reader["title"].ToString();
                         string author = reader["first_name"].ToString() + " " + reader["last_name"].ToString();
                         string subject = reader["subject_name"].ToString();
+                        string date = reader["publication_date"].ToString();
+
+                        date = date.Split(' ')[0].Split('.')[2];
 
                         bool isExists = false;
                         foreach (BookRecord book in books)
@@ -94,7 +99,7 @@ namespace Library.UserForms
 
                         if (!isExists)
                         {
-                            books.Add(new BookRecord(id, title, new List<String>() { author }, subject));
+                            books.Add(new BookRecord(id, title, new List<String>() { author }, subject, date));
                         }
                     }
                 }
@@ -115,6 +120,7 @@ namespace Library.UserForms
 
                     item.SubItems.Add(authors);
                     item.SubItems.Add(book.subject);
+                    item.SubItems.Add(book.date);
 
                     booksListView.Items.Add(item);
                 }

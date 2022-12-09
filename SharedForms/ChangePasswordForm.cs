@@ -63,11 +63,12 @@ namespace Library.SharedForms
                     cmd = new SqlCommand(query, database.GetConnection());
                     cmd.ExecuteNonQuery();
 
-                    MessageBox.Show("Успех", "Успех", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show("Пароль изменен", "Успешно", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    this.Close();
                 }
                 else
                 {
-                    MessageBox.Show("Ошибка", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Неверный пароль", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
 
                 database.CloseConnection();
@@ -75,7 +76,7 @@ namespace Library.SharedForms
             catch
             {
                 database.CloseConnection();
-                MessageBox.Show("Ошибка", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Не удалось изменить пароль", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
     }

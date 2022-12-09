@@ -77,6 +77,7 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.profileLastName = new System.Windows.Forms.TextBox();
+            this.bookDate = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.tabControl1.SuspendLayout();
             this.members.SuspendLayout();
             this.books.SuspendLayout();
@@ -247,7 +248,8 @@
             this.bookId,
             this.bookTitle,
             this.bookAuthors,
-            this.bookSubject});
+            this.bookSubject,
+            this.bookDate});
             this.booksList.FullRowSelect = true;
             this.booksList.HideSelection = false;
             this.booksList.Location = new System.Drawing.Point(31, 98);
@@ -268,19 +270,19 @@
             // 
             this.bookTitle.DisplayIndex = 0;
             this.bookTitle.Text = "Название";
-            this.bookTitle.Width = 195;
+            this.bookTitle.Width = 157;
             // 
             // bookAuthors
             // 
             this.bookAuthors.DisplayIndex = 1;
             this.bookAuthors.Text = "Автор(ы)";
-            this.bookAuthors.Width = 284;
+            this.bookAuthors.Width = 246;
             // 
             // bookSubject
             // 
             this.bookSubject.DisplayIndex = 2;
             this.bookSubject.Text = "Предмет";
-            this.bookSubject.Width = 119;
+            this.bookSubject.Width = 112;
             // 
             // authors
             // 
@@ -596,6 +598,11 @@
             this.profileLastName.Size = new System.Drawing.Size(194, 20);
             this.profileLastName.TabIndex = 3;
             // 
+            // bookDate
+            // 
+            this.bookDate.Text = "Год публикации";
+            this.bookDate.Width = 93;
+            // 
             // Dashboard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -671,5 +678,6 @@
         private System.Windows.Forms.ColumnHeader subjectId;
         private System.Windows.Forms.ColumnHeader subjectName;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.ColumnHeader bookDate;
     }
 }
