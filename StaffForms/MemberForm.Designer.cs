@@ -55,6 +55,7 @@
             this.loanBook = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.loanDate = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.loanStatus = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.button1 = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.profile.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -260,7 +261,7 @@
             this.reservationsList.View = System.Windows.Forms.View.Details;
             this.reservationsList.DoubleClick += new System.EventHandler(this.ReservationsList_DoubleClick);
             // 
-            // loanId
+            // reservationId
             // 
             this.reservationId.Text = "loanId";
             this.reservationId.Width = 0;
@@ -282,6 +283,7 @@
             // 
             // loans
             // 
+            this.loans.Controls.Add(this.button1);
             this.loans.Controls.Add(this.updateLoansButton);
             this.loans.Controls.Add(this.loansList);
             this.loans.Location = new System.Drawing.Point(4, 22);
@@ -293,7 +295,7 @@
             // 
             // updateLoansButton
             // 
-            this.updateLoansButton.Location = new System.Drawing.Point(693, 24);
+            this.updateLoansButton.Location = new System.Drawing.Point(677, 24);
             this.updateLoansButton.Name = "updateLoansButton";
             this.updateLoansButton.Size = new System.Drawing.Size(75, 49);
             this.updateLoansButton.TabIndex = 5;
@@ -310,7 +312,7 @@
             this.loanStatus});
             this.loansList.FullRowSelect = true;
             this.loansList.HideSelection = false;
-            this.loansList.Location = new System.Drawing.Point(37, 24);
+            this.loansList.Location = new System.Drawing.Point(26, 24);
             this.loansList.Name = "loansList";
             this.loansList.Size = new System.Drawing.Size(634, 468);
             this.loansList.TabIndex = 4;
@@ -337,6 +339,16 @@
             // 
             this.loanStatus.Text = "Статус";
             this.loanStatus.Width = 319;
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(677, 79);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 49);
+            this.button1.TabIndex = 6;
+            this.button1.Text = "Выдать книгу";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.CreateLoanWithoutReservation_Click);
             // 
             // MemberForm
             // 
@@ -385,5 +397,6 @@
         private System.Windows.Forms.Button updateReservationsButton;
         private System.Windows.Forms.Button updateLoansButton;
         private System.Windows.Forms.Button createLoanButton;
+        private System.Windows.Forms.Button button1;
     }
 }

@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Data.SqlClient;
+using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -202,45 +203,73 @@ namespace Library.StaffForms
         {
             if (reservationsList.SelectedItems.Count == 0)
             {
-                MessageBox.Show("Вы не выбрали читателя", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Вы не выбрали заявку", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
             if (reservationsList.SelectedItems.Count != 1)
             {
-                MessageBox.Show("Выберите только одного читателя", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Выберите только одну заявку", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
             String id = reservationsList.SelectedItems[0].SubItems[0].Text.ToString();
-            CreateLoan(id);
+            String status = reservationsList.SelectedItems[0].SubItems[3].Text.ToString();
+            Debug.WriteLine(status);
+            CreateLoan(id, status);
+            RenderReservationsList();
             RenderLoansList();
-
-            MessageBox.Show($"Вы выбрали заявку с id = {id}", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
-        private void CreateLoan(String reservationId)
+        private void CreateLoan(String reservationId, String status)
         {
+            if (status != "ACTIVE")
+            {
+                MessageBox.Show("Заявка должна быть активной", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
             try
             {
                 database.OpenConnection();
 
-                string query = $"EXEC create_loan_with_reservation {reservationId}";
+                string query = $"EXEC create_loan_with_reservation @reservation_id={reservationId}";
                 SqlCommand cmd = new SqlCommand(query, database.GetConnection());
 
                 cmd.ExecuteNonQuery();
 
-                MessageBox.Show("Успех", "Успех", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-                database.CloseConnection();
+                MessageBox.Show("Книга выдана", "Успешно", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            catch (SqlException e)
+            {
+                if (e.Message.Contains("Loans limit reached"))
+                {
+                    MessageBox.Show("Достигнут лимит записей", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                else
+                {
+                    throw;
+                }
             }
             catch
             {
-                MessageBox.Show("Ошибка", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
-
-                database.CloseConnection();
+                MessageBox.Show("Не удается выдать книгу", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 throw;
             }
+            finally
+            {
+                database.CloseConnection();
+            }
+        }
+
+        private void CreateLoanWithoutReservation_Click(object sender, EventArgs e)
+        {
+            using (AddLoanForm form = new AddLoanForm(memberId))
+            {
+                form.ShowDialog();
+            }
+
+            RenderLoansList();
         }
     }
 }

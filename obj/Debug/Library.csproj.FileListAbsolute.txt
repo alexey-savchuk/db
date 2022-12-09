@@ -55,3 +55,4 @@ C:\Users\saval\source\repos\ram\Library\bin\Debug\System.Configuration.Configura
 C:\Users\saval\source\repos\ram\Library\bin\Debug\System.Security.AccessControl.xml
 C:\Users\saval\source\repos\ram\Library\bin\Debug\System.Security.Permissions.xml
 C:\Users\saval\source\repos\ram\Library\bin\Debug\System.Security.Principal.Windows.xml
+C:\Users\saval\source\repos\ram\Library\obj\Debug\Library.StaffForms.AddLoanForm.resources

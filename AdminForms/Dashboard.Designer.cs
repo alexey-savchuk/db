@@ -49,6 +49,7 @@
             this.bookTitle = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.bookAuthors = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.bookSubject = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.bookDate = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.authors = new System.Windows.Forms.TabPage();
             this.button8 = new System.Windows.Forms.Button();
             this.authorSearch = new System.Windows.Forms.TextBox();
@@ -98,7 +99,6 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.profileLastName = new System.Windows.Forms.TextBox();
-            this.bookDate = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.tabControl1.SuspendLayout();
             this.members.SuspendLayout();
             this.books.SuspendLayout();
@@ -136,7 +136,7 @@
             this.members.Padding = new System.Windows.Forms.Padding(3);
             this.members.Size = new System.Drawing.Size(776, 535);
             this.members.TabIndex = 0;
-            this.members.Text = "Читатели";
+            this.members.Text = "Пользователи";
             this.members.UseVisualStyleBackColor = true;
             // 
             // roleComboBox
@@ -315,6 +315,11 @@
             this.bookSubject.DisplayIndex = 2;
             this.bookSubject.Text = "Предмет";
             this.bookSubject.Width = 114;
+            // 
+            // bookDate
+            // 
+            this.bookDate.Text = "Год публикации";
+            this.bookDate.Width = 100;
             // 
             // authors
             // 
@@ -819,11 +824,6 @@
             this.profileLastName.Name = "profileLastName";
             this.profileLastName.Size = new System.Drawing.Size(194, 20);
             this.profileLastName.TabIndex = 3;
-            // 
-            // bookDate
-            // 
-            this.bookDate.Text = "Год публикации";
-            this.bookDate.Width = 100;
             // 
             // Dashboard
             // 

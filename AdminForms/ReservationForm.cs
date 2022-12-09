@@ -53,6 +53,8 @@ namespace Library.AdminForms
                     bookId = reader["book_id"].ToString();
                     date = reader["reservation_date"].ToString().Split(' ')[0];
                     status = reader["status_name"].ToString();
+
+                    selectedStatusId = reader["status_id"].ToString();
                 }
 
                 query = $"SELECT * FROM book_and_author WHERE book_id = {bookId}";

@@ -63,8 +63,6 @@ namespace Library.StaffForms
             String id = membersList.SelectedItems[0].SubItems[0].Text.ToString();
             DeleteMember(id);
             RenderMemberList();
-
-            MessageBox.Show($"Вы выбрали заявку с id = {id}", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
         private void DeleteMember(String memberId)
@@ -78,13 +76,21 @@ namespace Library.StaffForms
 
                 cmd.ExecuteNonQuery();
 
-                database.CloseConnection();
             }
-            catch
+            catch (SqlException e)
             {
-
+                if (e.Message.Contains("Member has active loans"))
+                {
+                    MessageBox.Show("Пользователь не вернул книги", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                else
+                {
+                    throw;
+                }
+            }
+            finally
+            {
                 database.CloseConnection();
-                throw;
             }
         }
 

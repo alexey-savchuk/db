@@ -215,8 +215,6 @@ namespace Library.AdminForms
             String id = reservationsList.SelectedItems[0].SubItems[0].Text.ToString();
             CreateLoan(id);
             RenderLoansList();
-
-            MessageBox.Show($"Вы выбрали заявку с id = {id}", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
         private void CreateLoan(String reservationId)

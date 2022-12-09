@@ -148,8 +148,6 @@ namespace Library.UserForms
             String id = booksListView.SelectedItems[0].SubItems[0].Text.ToString();
             ReserveBook(id);
 
-            MessageBox.Show($"Вы выбрали книгу с id = {id}", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
             RenderReservationsList();
         }
 
@@ -164,11 +162,26 @@ namespace Library.UserForms
                 SqlCommand cmd = new SqlCommand(query, database.GetConnection());
                 cmd.ExecuteNonQuery();
 
-                MessageBox.Show("", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Вы зарезервировали книгу", "Успешно", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            catch (SqlException e)
+            {
+                if (e.Message.Contains("No book item to reserve"))
+                {
+                    MessageBox.Show("Нет доступных экземпляров книг", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                else if (e.Message.Contains("Reservations limit reached"))
+                {
+                    MessageBox.Show("Достигнут лимит заявок", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                else
+                {
+                    throw;
+                }
             }
             catch
             {
-                MessageBox.Show("", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Не удалось зарезервировать книгу", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 throw;
             }
             finally
@@ -199,9 +212,6 @@ namespace Library.UserForms
             String id = reservationsList.SelectedItems[0].SubItems[0].Text.ToString();
             CancelReservation(id);
             RenderReservationsList();
-
-            MessageBox.Show($"Вы выбрали заявку с id = {id}", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
         }
 
         private void RenderReservationsList()
