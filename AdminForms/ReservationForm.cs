@@ -159,12 +159,12 @@ namespace Library.AdminForms
                 SqlCommand cmd = new SqlCommand(query, database.GetConnection());
                 cmd.ExecuteNonQuery();
 
-                MessageBox.Show("", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Успешно", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 this.Hide();
             }
             catch
             {
-                MessageBox.Show("", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Ошибка", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 throw;
             }
             finally

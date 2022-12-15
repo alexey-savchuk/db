@@ -222,7 +222,7 @@ namespace Library.UserForms
             {
                 database.OpenConnection();
 
-                string query = $"SELECT * FROM member_and_reservation WHERE email = N'{MemberInfo.memberId}'";
+                string query = $"SELECT * FROM member_and_reservation WHERE member_id = N'{MemberInfo.memberId}'";
                 SqlCommand cmd = new SqlCommand(query, database.GetConnection());
 
 
@@ -291,7 +291,7 @@ namespace Library.UserForms
             {
                 database.OpenConnection();
 
-                string query = $"SELECT * FROM member_and_loan WHERE email = N'{email}'";
+                string query = $"SELECT * FROM member_and_loan WHERE member_id = N'{MemberInfo.memberId}'";
                 SqlCommand cmd = new SqlCommand(query, database.GetConnection());
 
                 using (SqlDataReader reader = cmd.ExecuteReader())
@@ -397,6 +397,11 @@ namespace Library.UserForms
         private void Dashboard_FormClosing(object sender, FormClosingEventArgs e)
         {
             Application.Exit();
+        }
+
+        private void updateReservationsButton_Click(object sender, EventArgs e)
+        {
+            RenderReservationsList();
         }
     }
 }

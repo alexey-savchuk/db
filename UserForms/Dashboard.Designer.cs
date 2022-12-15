@@ -37,6 +37,7 @@
             this.bookTitle = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.bookAuthors = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.bookSubject = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.bookDate = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.reserveButton = new System.Windows.Forms.Button();
             this.tabControl = new System.Windows.Forms.TabControl();
             this.booksTab = new System.Windows.Forms.TabPage();
@@ -67,7 +68,6 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.profileLastName = new System.Windows.Forms.TextBox();
-            this.bookDate = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.tabControl.SuspendLayout();
             this.booksTab.SuspendLayout();
             this.reservationsTab.SuspendLayout();
@@ -158,6 +158,11 @@
             this.bookSubject.Text = "Предмет";
             this.bookSubject.Width = 135;
             // 
+            // bookDate
+            // 
+            this.bookDate.Text = "Год публикации";
+            this.bookDate.Width = 95;
+            // 
             // reserveButton
             // 
             this.reserveButton.Location = new System.Drawing.Point(572, 66);
@@ -228,6 +233,7 @@
             this.updateReservationsButton.TabIndex = 1;
             this.updateReservationsButton.Text = "Обновить";
             this.updateReservationsButton.UseVisualStyleBackColor = true;
+            this.updateReservationsButton.Click += new System.EventHandler(this.updateReservationsButton_Click);
             // 
             // reservationsList
             // 
@@ -473,11 +479,6 @@
             this.profileLastName.Name = "profileLastName";
             this.profileLastName.Size = new System.Drawing.Size(194, 20);
             this.profileLastName.TabIndex = 3;
-            // 
-            // bookDate
-            // 
-            this.bookDate.Text = "Год публикации";
-            this.bookDate.Width = 95;
             // 
             // Dashboard
             // 

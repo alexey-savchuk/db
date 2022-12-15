@@ -187,7 +187,7 @@ namespace Library.StaffForms
             }
             else
             {
-                MessageBox.Show("", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Выберите авторов", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -208,7 +208,7 @@ namespace Library.StaffForms
             }
             else
             {
-                MessageBox.Show("", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Выберите предметы", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
     }

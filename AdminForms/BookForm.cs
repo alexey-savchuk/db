@@ -104,7 +104,7 @@ namespace Library.AdminForms
 
                 transaction.Commit();
 
-                MessageBox.Show("", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Успешно", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                 database.CloseConnection();
             }
@@ -112,7 +112,7 @@ namespace Library.AdminForms
             {
                 transaction.Rollback();
 
-                MessageBox.Show("", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Ошибка", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
                 database.CloseConnection();
                 throw;
@@ -290,7 +290,7 @@ namespace Library.AdminForms
             }
             else
             {
-                MessageBox.Show("", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Выберите авторов", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -311,7 +311,7 @@ namespace Library.AdminForms
             }
             else
             {
-                MessageBox.Show("", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Выберите предметы", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
